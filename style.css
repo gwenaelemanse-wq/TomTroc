@@ -77,15 +77,6 @@ body {
   margin-left: auto;
 }
 
-.photo {
-  width: 404px;
-  height: 539px;
-  transform: rotate(0deg);
-  opacity: 1;
-  top: 160px;
-  left: 726px;
-}
-
 .hero-content {
   display: flex;
   align-items: center;
@@ -195,4 +186,187 @@ body {
   margin: 0 16px;
   font-style: italic;
   color: #888;
+}
+
+.btn-view-all {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+  background-color: #0b8f6a; /* ton vert */
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/**Section description */
+.section-title {
+  margin-bottom: 40px;
+
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 32px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.fonction-description {
+  padding: 80px 0; /* espace haut/bas */
+  background: #f5f3ef; /* ton fond */
+  text-align: center;
+}
+
+.fonction-description-text {
+  max-width: 720px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+}
+
+.description-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+  align-items: stretch; /* toutes les cases même hauteur */
+}
+
+.description {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px; /* donne une base homogène */
+}
+
+.description-text {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter;
+  font-weight: 400;
+
+  font-size: 14px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  width: 180px;
+  height: 51px;
+
+  opacity: 1;
+  top: 1798px;
+  left: 1006px;
+}
+
+.btn-get-started {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+  background-color: #f5f3ef;
+  color: #0b8f6a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #00ac66;
+}
+
+.photo {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 32px;
+}
+
+.photo-banner {
+  margin-top: 30px;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.valeurs-content {
+  max-width: 392px; /* largeur Figma */
+  margin: 0 auto; /* centre le bloc */
+  display: flex;
+  flex-direction: column;
+}
+
+.valeurs-title {
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 32px;
+  text-align: left;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  max-width: 392px;
+}
+
+.valeurs {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.valeurs-text {
+  max-width: 392px; /* largeur Figma */
+  margin: 0 auto; /* centre le bloc */
+  text-align: left; /* texte aligné à gauche */
+  line-height: 1.6; /* plus pro visuellement */
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.signature {
+  color: #a6a6a6;
+}
+
+/** Coeur logo */
+
+.vector-image {
+  align-self: flex-end; /* 👉 pousse à droite */
+  margin-top: 16px;
+  margin-right: -80px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 28px;
+  background: white;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* tout à gauche */
+}
+
+.footer-nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.site-footer {
+  background-color: white;
 }

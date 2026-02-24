@@ -95,5 +95,69 @@
 
                 </div>
             </div>
+            <a href="#" class="btn-view-all">Voir tous les livres</a>
         </section>
+        <section class="fonction-description">
+            <div class="container">
+                <h2 class="section-title">Comment ça marche ?</h2>
+                <p class="fonction-description-text">Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
+
+                <div class="description-grid">
+                    <div class="description">
+                        <div class="description-text">Inscrivez-vous gratuitement sur notre plateforme</div>
+
+                    </div>
+                    <div class="description">
+                        <div class="description-text">Ajoutez les livres que vous souhaitez échanger à votre profil</div>
+
+                    </div>
+                    <div class="description">
+                        <div class="description-text">Parcourez les livres disponibles chez d'autres membres</div>
+
+                    </div>
+                    <div class="description">
+                        <div class="description-text">Proposez un échange et discutez avec d'autres passionnés de lecture</div>
+
+                    </div>
+                </div>
+                <a href="#" class="btn-get-started">Commencer à échanger</a>
+        </section>
+        <section class="photo">
+            <img class="photo-banner" src="images/Photo accueil 2.jpg" alt="Photo de l'accueil 2">
+        </section>
+
+        <section class="valeurs">
+            <div class="container">
+                <div class="valeurs-content">
+                    <h2 class="valeurs-title">Nos valeurs</h2>
+                    <p class="valeurs-text">Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté.
+                        Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs.
+                        Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
+                    <p class="valeurs-text">Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.</p>
+                    <p class="valeurs-text">Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter,
+                        de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
+
+                    <p class="signature">L'équipe TomTroc</p>
+
+
+                    <img class="vector-image" src="images/vector.svg" alt="Image vectorielle">
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Tom Troc©</a></li>
+                </ul>
+                <a class="logo.initiales" href="images/Group 10.png">
+                    <img src="images/Group 10.png" alt="Initiales TomTroc">
+                </a>
+            </nav>
+        </div>
+    </footer>
