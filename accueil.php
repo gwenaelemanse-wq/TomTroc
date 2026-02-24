@@ -19,8 +19,8 @@
 
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Nos livres à l’échange</a></li>
+                        <li><a href="accueil.php">Accueil</a></li>
+                        <li><a href="livres.php">Nos livres à l’échange</a></li>
                     </ul>
                 </nav>
             </div>
