@@ -39,14 +39,16 @@
     <main class="site-books">
         <section class="books">
             <div class="container books-content">
-                <h2 class="books-title">Nos livres à l’échange</h2>
+                <div class="main-top">
+                    <h2 class="books-title">Nos livres à l’échange</h2>
 
-                <form class="search-form" action="#" method="get">
-                    <div class="search-container">
-                        <input type="text" name="search" placeholder="Rechercher..." />
-                        <button type="submit">🔍</button>
-                    </div>
-                </form>
+                    <form class="search-form" action="#" method="get">
+                        <div class="search-container">
+                            <input type="text" name="search" placeholder="Rechercher..." />
+                            <button type="submit">🔍</button>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="books-grid">
 

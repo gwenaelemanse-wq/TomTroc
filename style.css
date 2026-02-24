@@ -423,3 +423,9 @@ body {
   letter-spacing: 0%;
   max-width: 392px;
 }
+
+.main-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
