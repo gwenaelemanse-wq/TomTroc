@@ -1,0 +1,198 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f3ef;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  background-color: #f5f3ef; /* couleur fond maquette */
+  padding: 20px 0;
+}
+
+/* Structure générale */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Partie gauche (logo + premier menu) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  display: flex;
+  width: 155px;
+  height: 51px;
+  opacity: 1;
+}
+
+/* =========================
+   MENUS
+========================= */
+
+.nav-primary ul,
+.nav-secondary ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Couleur des liens */
+.nav-primary a,
+.nav-secondary a {
+  text-decoration: none;
+  color: #000; /* NOIR */
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Hover propre */
+.nav-primary a:hover,
+.nav-secondary a:hover {
+  color: #0b8f6a; /* vert au survol */
+}
+
+.nav-secondary {
+  margin-left: auto;
+}
+
+.photo {
+  width: 404px;
+  height: 539px;
+  transform: rotate(0deg);
+  opacity: 1;
+  top: 160px;
+  left: 726px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-text h1 {
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 48px;
+
+  line-height: 1.2;
+  letter-spacing: 0%;
+
+  opacity: 1;
+}
+
+.hero-text {
+  flex: 1;
+  font-family: Inter;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0%;
+
+  opacity: 1;
+}
+
+.hero-text .btn-discover {
+  display: inline-block;
+  background-color: #0b8f6a; /* ton vert */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px; /* arrondi */
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.hero-photo {
+  flex: 1;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 450px; /* ajuste selon ta maquette */
+  border-radius: 8px;
+}
+
+/* SECTION avec couleur différente */
+.latest-books {
+  background-color: #faf9f7; /* couleur différente */
+  padding: 60px 0;
+}
+
+/* Titre de section */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+
+/* Grille 4 colonnes */
+.latest-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* Carte livre */
+.book-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image */
+.book-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Titre */
+.book-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 14px 16px 6px;
+}
+
+/* Description */
+.book-description {
+  font-size: 14px;
+  margin: 0 16px 8px;
+  color: #555;
+}
+
+/* Auteur */
+.book-author {
+  font-size: 13px;
+  margin: 0 16px;
+  font-style: italic;
+  color: #888;
+}
