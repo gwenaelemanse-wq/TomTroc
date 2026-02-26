@@ -83,7 +83,9 @@
 
                             <div class="details-owner">
                                 <h2>PROPRIÉTAIRE</h2>
-                                <img src="images/Group 12.png" alt="Avatar de Marie Dubois" class="owner-avatar">
+                                <a href="comptePublic.php">
+                                    <img src="images/Group 12.png" alt="Avatar du propiétaire" class="owner-avatar">
+                                </a>
                             </div>
 
                             <a href="messagerie.php" class="btn-contact">Envoyer un message</a>

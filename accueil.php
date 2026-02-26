@@ -59,7 +59,7 @@
                         Nous croyons en la magie du partage de connaissances<br />
                         et d'histoires à travers les livres. </p>
 
-                    <a href="#" class="btn-discover">Découvrir</a>
+                    <a href="livres.php" class="btn-discover">Découvrir</a>
 
 
                 </div>

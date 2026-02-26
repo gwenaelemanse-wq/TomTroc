@@ -766,6 +766,103 @@ h1 {
   border-radius: 6px; /* optionnel, plus joli */
 }
 
+/**Page compte public*/
+.compte-public-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+  gap: 2rem; /* espace entre les blocs */
+  align-items: stretch; /* évite les hauteurs étirées bizarrement */
+  width: 100%;
+}
+
+.compte-public-livres {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.compte-public-profil {
+  display: flex;
+  flex-direction: column; /* empile verticalement */
+  align-items: center; /* centre horizontalement */
+  text-align: center; /* centre le texte */
+  gap: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.compte-public-profil-photo {
+  padding-top: 30px;
+}
+.compte-public-pseudo {
+  font-family: Playfair Display;
+  font-weight: 600;
+  font-style: Regular;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+  margin-top: 30px;
+}
+
+.compte-public-profil .btn-contact-public {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f5f3ef;
+  color: #00ac66;
+  text-decoration: none;
+  font-weight: 600;
+  border-color: #00ac66;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 22px 38px;
+  margin-bottom: 10px;
+}
+.compte-public-ligne {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.compte-public-livres table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* très important */
+}
+
+.compte-public-livres tr:nth-child(even) {
+  background-color: #edf2f6;
+}
+
+.compte-public-livres td {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+  text-align: left;
+}
+
+.compte-public-livres td:nth-child(5) {
+  font-weight: 600;
+}
+
+.compte-public-livres td:nth-child(4) {
+  font-style: italic;
+}
+
+.compte-public-livres-photo {
+  width: 78px; /* taille fixe petite */
+  height: 78px; /* ratio type livre */
+  object-fit: cover; /* évite déformation */
+  border-radius: 6px; /* optionnel, plus joli */
+}
+
 /**Page de connexion/ inscription */
 .inscription-page,
 .connexion-page {
