@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TomTroc - Accueil</title>
+    <script src="js/menu.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,10 +14,11 @@
         <div class="container header-content">
 
             <div class="header-left">
-                <a class="logo" href="images/logo@2x.png">
+                <a class="logo" href="accueil.php">
                     <img src="images/logo@2x.png" alt="Logo de TomTroc">
                 </a>
 
+                <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
                         <li><a href="accueil.php">Accueil</a></li>
@@ -25,17 +27,24 @@
                 </nav>
             </div>
 
-            <nav class="nav-secondary">
-                <ul>
-                    <li><a href="#">Messagerie</a></li>
-                    <li><a href="#">Mon compte</a></li>
-                    <li><a href="#">Connexion</a></li>
-                </ul>
-            </nav>
+            <!-- Burger (visible seulement en mobile via CSS) -->
+            <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- Wrapper qui contient le menu de droite + (en mobile) on met aussi le menu de gauche dedans via CSS -->
+            <div class="header-nav">
+                <nav class="nav-secondary">
+                    <ul>
+                        <li><a href="#">Messagerie</a></li>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="connexion.php">Connexion</a></li>
+                    </ul>
+                </nav>
+            </div>
 
         </div>
     </header>
-
     <main class="site-main">
         <section class="hero">
             <div class="container hero-content">
@@ -47,7 +56,7 @@
 
                     <p>Donnez une nouvelle vie à vos livres en les<br />
                         échangeant avec d'autres amoureux de la lecture.<br />
-                        Nous croyons en la magie du partage de connaissances</br>
+                        Nous croyons en la magie du partage de connaissances<br />
                         et d'histoires à travers les livres. </p>
 
                     <a href="#" class="btn-discover">Découvrir</a>
@@ -121,10 +130,11 @@
                     </div>
                 </div>
                 <a href="#" class="btn-get-started">Commencer à échanger</a>
+            </div>
         </section>
-        <section class="photo">
+        <div class="photo">
             <img class="photo-banner" src="images/Photo accueil 2.jpg" alt="Photo de l'accueil 2">
-        </section>
+        </div>
 
         <section class="valeurs">
             <div class="container">
@@ -161,3 +171,7 @@
             </nav>
         </div>
     </footer>
+
+</body>
+
+</html>

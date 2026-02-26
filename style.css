@@ -33,6 +33,10 @@ body {
   gap: 40px;
 }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+}
 /* =========================
    LOGO
 ========================= */
@@ -75,6 +79,14 @@ body {
 
 .nav-secondary {
   margin-left: auto;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .hero-content {
@@ -428,4 +440,416 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/**Section de détails du livre */
+/* ✅ Layout page : header / main / footer */
+.details-livre-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f3ef;
+}
+
+/* ✅ le main prend tout l’espace restant entre header et footer */
+.details-livre-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+.details-livre-section {
+  width: 50%;
+  display: flex;
+  background-color: #faf9f7;
+}
+.details-livre-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px; /* optionnel mais plus propre que space-between */
+}
+/* ✅ Colonne image à gauche */
+.details-livre-image {
+  width: 50%;
+}
+
+.details-livre-image img {
+  width: 100%;
+  height: 100%; /* clé : prend toute la hauteur du main */
+  object-fit: cover; /* recadre proprement */
+  display: block;
+}
+
+/* ✅ Colonne droite */
+.details-livre-info {
+  width: 720px;
+  height: 863px;
+  opacity: 1;
+  top: 124px;
+  left: 720px;
+  background: #faf9f7;
+}
+.details-livre-title {
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.details-livre-description {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Semi Bold;
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: 8%;
+  color: #292929;
+}
+.details-livre-description p {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.details-livre-author {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #a6a6a6;
+}
+
+.details-owner h2 {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Semi Bold;
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: 8%;
+  color: #292929;
+}
+
+/** Pour éviter que le texte parte trop large */
+.details-livre-info-inner {
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* espace vertical propre */
+}
+
+.btn-contact {
+  display: block;
+  width: 100%;
+  padding: 38px 22px;
+  background-color: #00ac66; /* ton vert */
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/**Page de connexion/ inscription */
+.inscription-page,
+.connexion-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.inscription-container,
+.connexion-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.inscription-section,
+.connexion-section {
+  width: 50%;
+  margin-top: 0;
+  margin-left: 0;
+  opacity: 1;
+}
+
+.inscription-image,
+.connexion-image {
+  width: 50%;
+}
+
+.inscription-image img,
+.connexion-image img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.inscription-title,
+.connexion-title {
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.register-link {
+  font-family: inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+}
+
+.register-link a {
+  color: #292929;
+  text-decoration: underline;
+}
+
+.form-group input {
+  width: 322px;
+  height: 50px;
+  top: 341px;
+  left: 150px;
+  opacity: 1;
+  border-radius: 6px;
+  border-width: 1px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  margin-bottom: 40px;
+}
+
+.form-group label {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #a6a6a6;
+}
+
+.inscription-form,
+.connexion-form {
+  width: 322px;
+  opacity: 1;
+}
+
+.submit-container button {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  padding: 12px;
+  background-color: #00ac66; /* ton vert */
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/**Responsive mobile */
+
+@media (max-width: 768px) {
+  /* === PAGE CONNEXION === */
+  /* === PAGE INSCRIPTION === */
+
+  .inscription-container,
+  .connexion-container {
+    display: flex; /* au cas où */
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start; /* pas space-between */
+    gap: 24px;
+  }
+
+  /* IMPORTANT : virgule, et reset des marges desktop */
+  .inscription-section,
+  .inscription-image,
+  .connexion-section,
+  .connexion-image {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remettre le bloc du formulaire "normal" en mobile */
+  .inscription-section,
+  .connexion-section {
+    height: auto;
+  }
+
+  /* Form responsive */
+  .inscription-form,
+  .connexion-form {
+    width: 100%; /* annule width: 322px si besoin */
+    max-width: 100%;
+  }
+
+  .inscription-form input,
+  .inscription-form button,
+  .connexion-form input,
+  .connexion-form button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-group input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Image après formulaire */
+  .inscription-image,
+  .connexion-image {
+    margin-top: 16px; /* espace entre form et image */
+    position: relative;
+    z-index: 1;
+  }
+
+  .inscription-image img,
+  .connexion-image img {
+    width: 100%;
+    height: auto; /* clé */
+    display: block;
+  }
+
+  /*Bouton largeur*/
+  .submit-container button {
+    width: 100%;
+  }
+
+  /*Navigation / header*/
+  /* ===== HEADER BURGER ===== */
+
+  @media (max-width: 768px) {
+    /* 1) base header mobile */
+    .header-content {
+      position: relative; /* pour ancrer le menu dropdown */
+      align-items: center;
+    }
+
+    /* burger visible */
+    .burger {
+      display: block;
+      background: none;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* 2) on cache les menus par défaut */
+    .nav-primary,
+    .nav-secondary {
+      display: none;
+    }
+
+    /* 3) dropdown quand ouvert */
+    .site-header.is-open .nav-primary,
+    .site-header.is-open .nav-secondary {
+      display: block;
+    }
+
+    /* 4) style panneau dropdown (les 2 navs empilées) */
+    .site-header.is-open .nav-primary,
+    .site-header.is-open .nav-secondary {
+      position: absolute;
+      right: 16px;
+      top: calc(100% + 10px);
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      min-width: 220px;
+      z-index: 50;
+    }
+
+    /* 5) on évite d’avoir DEUX panneaux : on regroupe les deux navs comme un seul bloc visuel */
+    .site-header.is-open .nav-secondary {
+      top: calc(100% + 10px + 140px); /* TEMP : on va mieux faire juste après */
+    }
+
+    /* ✅ mieux : au lieu de 2 panneaux, on transforme nav-secondary en “suite” du premier */
+    .site-header.is-open .nav-secondary {
+      position: static;
+      box-shadow: none;
+      padding-top: 0;
+      margin-top: 8px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* 6) listes en colonne */
+    .site-header.is-open nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 7) liens propres */
+    .site-header.is-open nav a {
+      display: block;
+      padding: 10px 8px;
+      border-radius: 8px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .site-header.is-open nav a:hover {
+      background: #f5f3ef;
+    }
+
+    /* 8) IMPORTANT : on évite le “brouillon” => PAS de wrap sur les nav en mobile */
+    .site-header nav ul {
+      flex-wrap: nowrap; /* si tu avais flex-wrap: wrap quelque part, ça le neutralise */
+    }
+  }
+
+  /** FOOTER */
+  /* ===== FOOTER MOBILE ===== */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* ton footer-nav est un conteneur */
+  .footer-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* liens en colonne */
+  .footer-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* IMPORTANT : annuler le coeur qui part à droite */
+  .vector-image {
+    align-self: center;
+    margin-right: 0;
+  }
 }
