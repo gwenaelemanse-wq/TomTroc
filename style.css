@@ -1,7 +1,20 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
   background: #f5f3ef;
+  max-width: 100%;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .container {
@@ -443,36 +456,41 @@ body {
 }
 
 /**Section de détails du livre */
-/* ✅ Layout page : header / main / footer */
-.details-livre-page {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #f5f3ef;
+
+.details-livre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
+.details-livre-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.details-breadcrumb {
+  margin: 24px 0;
+  color: #a6a6a6;
+  font-size: 14px;
+}
+
+.details-livre-ligne {
+  margin-bottom: 10px;
+}
 /* ✅ le main prend tout l’espace restant entre header et footer */
 .details-livre-page {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 100vh;
   padding-top: 80px;
 }
+
 .details-livre-section {
-  width: 50%;
+  width: 100%;
   display: flex;
   background-color: #faf9f7;
 }
-.details-livre-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px; /* optionnel mais plus propre que space-between */
-}
+
 /* ✅ Colonne image à gauche */
 .details-livre-image {
-  width: 50%;
+  width: 100%;
 }
 
 .details-livre-image img {
@@ -484,8 +502,7 @@ body {
 
 /* ✅ Colonne droite */
 .details-livre-info {
-  width: 720px;
-  height: 863px;
+  width: 100%;
   opacity: 1;
   top: 124px;
   left: 720px;
@@ -539,16 +556,18 @@ body {
 /** Pour éviter que le texte parte trop large */
 .details-livre-info-inner {
   width: 100%;
-  max-width: none;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 24px; /* espace vertical propre */
+
+  padding: 60px;
 }
 
 .btn-contact {
   display: block;
-  width: 100%;
-  padding: 38px 22px;
+  width: 480px;
+  height: 30px;
+  padding: 30px 10px;
   background-color: #00ac66; /* ton vert */
   color: white;
   text-decoration: none;
@@ -557,6 +576,194 @@ body {
   border: none;
   cursor: pointer;
   text-align: center;
+  margin-top: 50px;
+}
+
+/**Page compte personnel */
+.mon-compte-section h2 {
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.mon-compte-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+  gap: 2rem; /* espace entre les blocs */
+  align-items: stretch; /* évite les hauteurs étirées bizarrement */
+  width: 100%;
+}
+
+/* Le bloc livres prend toute la largeur */
+.mon-compte-livres {
+  grid-column: 1 / -1;
+}
+
+.mon-compte-profil {
+  display: flex;
+  flex-direction: column; /* empile verticalement */
+  align-items: center; /* centre horizontalement */
+  text-align: center; /* centre le texte */
+  gap: 12px;
+}
+
+.mon-compte-pseudo {
+  font-family: Playfair Display;
+  font-weight: 600;
+  font-style: Regular;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+  margin-top: 30px;
+}
+
+.mon-compte-ligne {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.mon-compte-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* on garde le centrage global */
+}
+
+/* Le wrapper interne */
+.form-wrapper {
+  width: 100%; /* même largeur que tes inputs */
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Les inputs prennent toute la largeur du wrapper */
+.form-wrapper input {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #edf2f6;
+  border: none;
+}
+
+.form-wrapper button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f5f3ef;
+  color: #00ac66;
+  text-decoration: none;
+  font-weight: 600;
+  border-color: #00ac66;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 22px 38px;
+}
+
+.mon-compte-profil,
+.mon-compte-info,
+.mon-compte-livres {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.mon-compte-info p {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #a6a6a6;
+}
+
+.mon-compte-info h1 {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Regular;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+}
+
+.mon-compte-livres table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* très important */
+}
+.mon-compte-livres th {
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 600;
+  color: #292929;
+}
+
+.mon-compte-livres tr {
+  border-top: 1px solid #f0f0f0;
+}
+
+.mon-compte-livres tr:nth-child(even) {
+  background-color: #edf2f6;
+}
+
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status--ok {
+  background-color: #d7f3e3;
+  color: #1b7a4b;
+}
+
+.status--ko {
+  background-color: #f8d7da;
+  color: #a1272d;
+}
+
+.action-edit {
+  color: #000;
+  text-decoration: underline;
+  margin-right: 16px;
+}
+
+.action-delete {
+  color: #d93025;
+  text-decoration: underline;
+}
+.mon-compte-livres td {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+  text-align: left;
+}
+
+.mon-compte-livres td:nth-child(5) {
+  font-weight: 600;
+}
+
+.mon-compte-livres td:nth-child(4) {
+  font-style: italic;
+}
+
+.mon-compte-livre-photo {
+  width: 78px; /* taille fixe petite */
+  height: 78px; /* ratio type livre */
+  object-fit: cover; /* évite déformation */
+  border-radius: 6px; /* optionnel, plus joli */
 }
 
 /**Page de connexion/ inscription */

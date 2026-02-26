@@ -36,8 +36,8 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="#">Messagerie</a></li>
-                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="messagerie.php">Messagerie</a></li>
+                        <li><a href="monCompte.php">Mon compte</a></li>
                         <li><a href="connexion.php">Connexion</a></li>
                     </ul>
                 </nav>

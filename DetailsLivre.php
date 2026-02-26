@@ -36,8 +36,8 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="#">Messagerie</a></li>
-                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="messagerie.php">Messagerie</a></li>
+                        <li><a href="monCompte.php">Mon compte</a></li>
                         <li><a href="connexion.php">Connexion</a></li>
                     </ul>
                 </nav>
@@ -47,40 +47,50 @@
     </header>
 
     <main class="details-livre-page">
+
+
         <div class="details-livre-container">
+            <p class="details-breadcrumb">Nos livres &gt; The Kinfolk Table</p>
 
-            <div class="details-livre-image">
-                <img src="images/livre1.jpg" alt="Image du livre" class="details-livre-hero-image">
-            </div>
+            <div class="details-livre-grid">
 
-            <section class="details-livre-section">
-                <div class="details-livre-info">
-                    <div class="details-livre-info-inner">
-                        <h1 class="details-livre-title">The Kinfolk Table</h1>
-                        <p class="details-livre-author">par Nathan Williams</p>
+                <div class="details-livre-image">
 
-                        <div class="details-livre-description">
-                            <h2>DESCRIPTION</h2>
-                            <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
-                                Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.</p>
-                            <p>Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes
-                                et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité.</p>
-                            <p>Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers.</p>
-                            <p>'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain
-                                que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.</p>
-
-                        </div>
-
-                        <div class="details-owner">
-                            <h2>PROPRIÉTAIRE</h2>
-                            <img src="images/Group 12.png" alt="Avatar de Marie Dubois" class="owner-avatar">
-                        </div>
-
-                        <a href="messagerie.php" class="btn-contact">Envoyer un message</a>
-                    </div>
+                    <img src="images/livre1.jpg" alt="Image du livre" class="details-livre-hero-image">
                 </div>
-            </section>
 
+                <section class="details-livre-section">
+                    <div class="details-livre-info">
+                        <div class="details-livre-info-inner">
+                            <h1 class="details-livre-title">The Kinfolk Table</h1>
+                            <p class="details-livre-author">par Nathan Williams</p>
+
+                            <div class="photo-wrapper">
+                                <img src="images/Line 3.png" alt="Ligne de séparation" class="details-livre-ligne">
+                            </div>
+
+                            <div class="details-livre-description">
+                                <h2>DESCRIPTION</h2>
+                                <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
+                                    Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.</p>
+                                <p>Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes
+                                    et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité.</p>
+                                <p>Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers.</p>
+                                <p>'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain
+                                    que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.</p>
+
+                            </div>
+
+                            <div class="details-owner">
+                                <h2>PROPRIÉTAIRE</h2>
+                                <img src="images/Group 12.png" alt="Avatar de Marie Dubois" class="owner-avatar">
+                            </div>
+
+                            <a href="messagerie.php" class="btn-contact">Envoyer un message</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
     <footer class="site-footer">
