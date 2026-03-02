@@ -45,6 +45,44 @@
 
         </div>
     </header>
+    <main class="editer-page">
+        <a href="monCompte.php" alt="Retour" class="btn-retour"><img src="images/Line 6.png" alt="fleche" class="fleche-retour">retour</a>
+        <h1>Modifier les informations</h1>
+        <div class="editer-grid">
+            <div class="editer-photo">
+                <h2 class="editer-photo-titre">Photo</h2>
+                <img src="images/livre1.jpg" alt="Photo du livre edite" class="editer-photo-livre">
+                <a href="#" alt="Modifier la photo" class="editer-photo-modifier">Modifier la photo</a>
+            </div>
+            <section class="editer-section">
+
+                <form class="editer-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="titre">Titre</label>
+                        <input type="text" id="titre" name="titre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="auteur">Auteur</label>
+                        <input type="text" id="auteur" name="auteur" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentaire">Commentaire</label>
+                        <input type="text" id="comment" name="comment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="statut">Disponibilité:</label>
+                        <select name="statut" id="statut">
+                            <option value="disponible">Disponible</option>
+                            <option value="indisponible">Indisponible</option>
+                        </select>
+                    </div>
+                    <div class="submit-container">
+                        <button type="submit">Valider</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
 
     <footer class="site-footer">
         <div class="container footer-content">

@@ -52,7 +52,7 @@
                     <div class="compte-public-profil">
                         <img src="images/Mask group.png" alt="Photo du profil public" class="compte-public-profil-photo">
                         <div class="photo-wrapper">
-                            <img src="images/Line 5.png" alt="Ligne de séparation" class="mon-compte-ligne">
+                            <img src="images/Line 5.png" alt="Ligne de séparation" class="compte-public-ligne">
                         </div>
                         <p class="compte-public-pseudo">Pseudo: Utilisateur123</p>
                         <p class="compte-public-timeMember">Membre depuis: </p>

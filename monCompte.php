@@ -94,7 +94,7 @@
                                     <td>Auteur du livre 1</td>
                                     <td>Description du livre 1</td>
                                     <td><span class="status status--ok">Disponible</span></td>
-                                    <td> <a href="#" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
+                                    <td> <a href="editer.php" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
                                 </tr>
                                 <tr>
                                     <td><img src="images/livre2.jpg" alt="Livre 2" class="mon-compte-livre-photo"></td>
@@ -102,7 +102,7 @@
                                     <td>Auteur du livre 2</td>
                                     <td>Description du livre 2</td>
                                     <td><span class="status status--ok">Disponible</span></td>
-                                    <td> <a href="#" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
+                                    <td> <a href="editer.php" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
                                 </tr>
                                 <tr>
                                     <td><img src="images/livre3.jpg" alt="Livre 3" class="mon-compte-livre-photo"></td>
@@ -110,7 +110,7 @@
                                     <td>Auteur du livre 3</td>
                                     <td>Description du livre 3</td>
                                     <td><span class="status status--ko">Indisponible</span></td>
-                                    <td> <a href="#" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
+                                    <td> <a href="editer.php" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
                                 </tr>
                                 <tr>
                                     <td><img src="images/livre4.jpg" alt="Livre 4" class="mon-compte-livre-photo"></td>
@@ -118,7 +118,7 @@
                                     <td>Auteur du livre 4</td>
                                     <td>Description du livre 4</td>
                                     <td><span class="status status--ok">Disponible</span></td>
-                                    <td> <a href="#" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
+                                    <td> <a href="editer.php" class="action-edit">Éditer</a> <a href="#" class="action-delete">Supprimer</a></td>
                                 </tr>
                             </tbody>
                         </table>
