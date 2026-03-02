@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Compte</title>
-    <script src="js/menu.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/menu.js" defer></script>
 </head>
 
 <body>
@@ -14,15 +14,17 @@
         <div class="container header-content">
 
             <div class="header-left">
-                <a class="logo" href="accueil.php">
-                    <img src="images/logo@2x.png" alt="Logo de TomTroc">
+                <a class="logo" href="index.php?page=accueil">
+                    <img src="assets/images/logo@2x.png" alt="Logo de TomTroc">
                 </a>
 
                 <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="accueil.php">Accueil</a></li>
-                        <li><a href="livres.php">Nos livres à l’échange</a></li>
+                        <li><a href="index.php?page=accueil">Accueil</a></li>
+                        <li>
+                            <a href="index.php?page=livres">Nos livres à l’échange</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -36,9 +38,9 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="messagerie.php">Messagerie</a></li>
-                        <li><a href="monCompte.php">Mon compte</a></li>
-                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
+                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?page=connexion">Connexion</a></li>
                     </ul>
                 </nav>
             </div>
@@ -73,7 +75,7 @@
                     data-initiales="AL">
 
                     <div class="avatar">
-                        <img src="images/alex.png" alt="Photo de Alexlecture">
+                        <img src="assets/images/alex.png" alt="Photo de Alexlecture">
                     </div>
 
                     <div class="conversation_infos">
@@ -94,7 +96,7 @@
                     data-nom="Nathalire"
                     data-initiales="NA">
                     <div class="avatar">
-                        <img src="images/nath.png" alt="Photo de Nathalire">
+                        <img src="assets/images/nath.png" alt="Photo de Nathalire">
                     </div>
                     <div class="conversation_infos">
                         <span class="conversation_nom">Nathalire</span>
@@ -108,7 +110,7 @@
                     data-nom="Sas634"
                     data-initiales="SA">
                     <div class="avatar">
-                        <img src="images/sas.png" alt="Photo de Sas634">
+                        <img src="assets/images/sas.png" alt="Photo de Sas634">
                     </div>
                     <div class="conversation_infos">
                         <span class="conversation_nom">Sas634</span>
@@ -129,7 +131,7 @@
             <!-- Header : interlocuteur actif -->
             <header class="chat_header" id="chat-header">
                 <div class="avatar">
-                    <img src="images/alex.png" alt="Photo de Alexlecture">
+                    <img src="assets/images/alex.png" alt="Photo de Alexlecture">
                 </div>
                 <span class="chat_nom" id="chat-nom">Alexlecture</span>
             </header>
@@ -153,7 +155,7 @@
                 <!-- Message reçu (gauche) -->
                 <article class="message message-recu">
                     <div class="avatar">
-                        <img src="images/alex.png" alt="Photo de Alexlecture">
+                        <img src="assets/images/alex.png" alt="Photo de Alexlecture">
                     </div>
                     <div class="message_bloc">
                         <time class="message_heure" datetime="2024-08-21T15:48">21.08 15:48</time>
@@ -201,8 +203,8 @@
                     <li><a href="#">Mentions légales</a></li>
                     <li><a href="#">Tom Troc©</a></li>
                 </ul>
-                <a class="logo-initiales" href="images/Group 10.png">
-                    <img src="images/Group 10.png" alt="Initiales TomTroc">
+                <a class="logo-initiales" href="assets/images/Group10.png">
+                    <img src="assets/images/Group10.png" alt="Initiales TomTroc">
                 </a>
             </nav>
         </div>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TomTroc - Accueil</title>
-    <script src="js/menu.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/menu.js" defer></script>
 </head>
 
 <body>
@@ -14,15 +14,17 @@
         <div class="container header-content">
 
             <div class="header-left">
-                <a class="logo" href="accueil.php">
-                    <img src="images/logo@2x.png" alt="Logo de TomTroc">
+                <a class="logo" href="index.php?page=accueil">
+                    <img src="assets/images/logo@2x.png" alt="Logo de TomTroc">
                 </a>
 
                 <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="accueil.php">Accueil</a></li>
-                        <li><a href="livres.php">Nos livres à l’échange</a></li>
+                        <li><a href="index.php?page=accueil">Accueil</a></li>
+                        <li>
+                            <a href="index.php?page=livres">Nos livres à l’échange</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -36,9 +38,9 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="messagerie.php">Messagerie</a></li>
-                        <li><a href="monCompte.php">Mon compte</a></li>
-                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
+                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?page=connexion">Connexion</a></li>
                     </ul>
                 </nav>
             </div>
@@ -59,12 +61,12 @@
                         Nous croyons en la magie du partage de connaissances<br />
                         et d'histoires à travers les livres. </p>
 
-                    <a href="livres.php" class="btn-discover">Découvrir</a>
+                    <a href="index.php?page=livres" class="btn-discover">Découvrir</a>
 
 
                 </div>
                 <div class="hero-photo">
-                    <img src="images/photo de l'accueil.jpg" alt="Photo de l'accueil">
+                    <img src="assets/images/photo de l'accueil.jpg" alt="Photo de l'accueil">
                 </div>
             </div>
         </section>
@@ -75,28 +77,28 @@
                 <div class="latest-grid">
 
                     <article class="book-card">
-                        <img src="images/livre1.jpg" alt="Livre 1">
+                        <img src="assets/images/livre1.jpg" alt="Livre 1">
                         <h3 class="book-title">Livre 1</h3>
                         <p class="book-description">Description du livre 1</p>
                         <p class="book-author">Auteur du livre 1</p>
                     </article>
 
                     <article class="book-card">
-                        <img src="images/livre2.jpg" alt="Livre 2">
+                        <img src="assets/images/livre2.jpg" alt="Livre 2">
                         <h3 class="book-title">Livre 2</h3>
                         <p class="book-description">Description du livre 2</p>
                         <p class="book-author">Auteur du livre 2</p>
                     </article>
 
                     <article class="book-card">
-                        <img src="images/livre3.jpg" alt="Livre 3">
+                        <img src="assets/images/livre3.jpg" alt="Livre 3">
                         <h3 class="book-title">Livre 3</h3>
                         <p class="book-description">Description du livre 3</p>
                         <p class="book-author">Auteur du livre 3</p>
                     </article>
 
                     <article class="book-card">
-                        <img src="images/livre4.jpg" alt="Livre 4">
+                        <img src="assets/images/livre4.jpg" alt="Livre 4">
                         <h3 class="book-title">Livre 4</h3>
                         <p class="book-description">Description du livre 4</p>
                         <p class="book-author">Auteur du livre 4</p>
@@ -104,7 +106,7 @@
 
                 </div>
             </div>
-            <a href="#" class="btn-view-all">Voir tous les livres</a>
+            <a href="index.php?page=livres" class="btn-view-all">Voir tous les livres</a>
         </section>
         <section class="fonction-description">
             <div class="container">
@@ -129,11 +131,11 @@
 
                     </div>
                 </div>
-                <a href="#" class="btn-get-started">Commencer à échanger</a>
+                <a href="index.php?page=livres" class="btn-get-started">Commencer à échanger</a>
             </div>
         </section>
         <div class="photo">
-            <img class="photo-banner" src="images/Photo accueil 2.jpg" alt="Photo de l'accueil 2">
+            <img class="photo-banner" src="assets/images/Photo accueil 2.jpg" alt="Photo de l'accueil 2">
         </div>
 
         <section class="valeurs">
@@ -150,7 +152,7 @@
                     <p class="signature">L'équipe TomTroc</p>
 
 
-                    <img class="vector-image" src="images/vector.svg" alt="Image vectorielle">
+                    <img class="vector-image" src="assets/images/vector.svg" alt="Image vectorielle">
                 </div>
             </div>
         </section>
@@ -165,8 +167,8 @@
                     <li><a href="#">Mentions légales</a></li>
                     <li><a href="#">Tom Troc©</a></li>
                 </ul>
-                <a class="logo.initiales" href="images/Group 10.png">
-                    <img src="images/Group 10.png" alt="Initiales TomTroc">
+                <a class="logo.initiales" href="assets/images/Group10.png">
+                    <img src="assets/images/Group10.png" alt="Initiales TomTroc">
                 </a>
             </nav>
         </div>

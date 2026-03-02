@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="js/menu.js"></script>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/menu.js" defer></script>
 </head>
 
 <body>
@@ -14,15 +14,17 @@
         <div class="container header-content">
 
             <div class="header-left">
-                <a class="logo" href="accueil.php">
-                    <img src="images/logo@2x.png" alt="Logo de TomTroc">
+                <a class="logo" href="index.php?page=accueil">
+                    <img src="assets/images/logo@2x.png" alt="Logo de TomTroc">
                 </a>
 
                 <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="accueil.php">Accueil</a></li>
-                        <li><a href="livres.php">Nos livres à l’échange</a></li>
+                        <li><a href="index.php?page=accueil">Accueil</a></li>
+                        <li>
+                            <a href="index.php?page=livres">Nos livres à l’échange</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -36,22 +38,26 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="messagerie.php">Messagerie</a></li>
-                        <li><a href="monCompte.php">Mon compte</a></li>
-                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
+                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?page=connexion">Connexion</a></li>
                     </ul>
                 </nav>
             </div>
 
         </div>
     </header>
-    <main class="connexion-page">
-        <div class="connexion-container">
-            <section class="connexion-section">
+    <main class="inscription-page">
+        <div class="inscription-container">
+            <section class="inscription-section">
 
-                <h2 class="connexion-title">Connexion</h2>
+                <h2 class="inscription-title">Inscription</h2>
 
-                <form class="connexion-form" action="#" method="post">
+                <form class="inscription-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" id="pseudo" name="pseudo" required>
+                    </div>
                     <div class="form-group">
                         <label for="email">Adresse email</label>
                         <input type="email" id="email" name="email" required>
@@ -61,15 +67,15 @@
                         <input type="password" id="password" name="password" required>
                     </div>
                     <div class="submit-container">
-                        <button type="submit">Se connecter</button>
+                        <button type="submit">S'inscrire</button>
                     </div>
                     <div class="register-link">
-                        <p>Pas de compte ? <a href="inscription.php">Inscrivez-vous!</a></p>
+                        <p>Déjà inscrit ? <a href="index.php?page=connexion">Connectez-vous!</a></p>
                     </div>
                 </form>
             </section>
-            <div class="connexion-image">
-                <img src="images/Mask group.png" alt="Image de connexion">
+            <div class="inscription-image">
+                <img src="assets/images/Mask group.png" alt="Image d'inscription">
             </div>
 
         </div>
@@ -84,8 +90,8 @@
                     <li><a href="#">Mentions légales</a></li>
                     <li><a href="#">Tom Troc©</a></li>
                 </ul>
-                <a class="logo-initiales" href="images/Group 10.png">
-                    <img src="images/Group 10.png" alt="Initiales TomTroc">
+                <a class="logo-initiales" href="assets/images/Group10.png">
+                    <img src="assets/images/Group10.png" alt="Initiales TomTroc">
                 </a>
             </nav>
         </div>
