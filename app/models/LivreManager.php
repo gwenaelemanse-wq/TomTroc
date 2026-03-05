@@ -40,7 +40,11 @@ class LivreManager extends BaseManager
 
     public function findOne(int $id): ?LivreEntity
     {
-        $sql = "SELECT * FROM livres WHERE id = :id";
+        $sql = "SELECT l.*, u.avatar, u.pseudo 
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user
+            WHERE l.id = :id";
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
 
@@ -59,9 +63,8 @@ class LivreManager extends BaseManager
         $livre->setStatut($row['statut']);
         $livre->setDateCreation($row['date_creation']);
         $livre->setUserId($row['user_id']);
-        $livre->setAvatar($row['avatar']);
-        $livre->setPseudo($row['pseudo']);
-
+        $livre->setAvatar($row['avatar'] ?? '');
+        $livre->setPseudo($row['pseudo'] ?? '');
 
         return $livre;
     }

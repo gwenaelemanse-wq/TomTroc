@@ -81,7 +81,7 @@
 
                                 <a href="index.php?page=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
                                     <img
-                                        src="<?= htmlspecialchars($livre->getUserId() ?? 'assets/images/Group12.png') ?>"
+                                        src="<?= htmlspecialchars($livre->getAvatar() ?? 'assets/images/Group12.png') ?>"
                                         alt="Avatar du propriétaire"
                                         class="owner-avatar">
                                 </a>
