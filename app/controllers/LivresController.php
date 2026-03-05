@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../config/db.php';
-require_once __DIR__ . '/../models/LivreManager.php';
 
 class LivresController
 {
@@ -9,7 +7,7 @@ class LivresController
 
     public function __construct()
     {
-        $this->manager = new LivreManager(getPDO());
+        $this->manager = new LivreManager();
     }
 
     public function index(): void

@@ -14,16 +14,16 @@
         <div class="container header-content">
 
             <div class="header-left">
-                <a class="logo" href="index.php?page=accueil">
+                <a class="logo" href="index.php?action=accueil">
                     <img src="assets/images/logo@2x.png" alt="Logo de TomTroc">
                 </a>
 
                 <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="index.php?page=accueil">Accueil</a></li>
+                        <li><a href="index.php?action=accueil">Accueil</a></li>
                         <li>
-                            <a href="index.php?page=livres">Nos livres à l’échange</a>
+                            <a href="index.php?action=livres">Nos livres à l’échange</a>
                         </li>
                     </ul>
                 </nav>
@@ -38,9 +38,9 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
-                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
-                        <li><a href="index.php?page=connexion">Connexion</a></li>
+                        <li><a href="index.php?action=messagerie">Messagerie</a></li>
+                        <li><a href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?action=connexion">Connexion</a></li>
                     </ul>
                 </nav>
             </div>
@@ -66,16 +66,15 @@
                     <?php foreach ($livres as $livre): ?>
                         <article class="book-card">
                             <img
-                                class="book-card img"
-                                src="<?= htmlspecialchars($livre['image']) ?>"
-                                alt="<?= htmlspecialchars($livre['titre']) ?>">
+                                class="book-card-img"
+                                src="<?= htmlspecialchars($livre->getImage()) ?>"
+                                alt="<?= htmlspecialchars($livre->getTitre()) ?>">
+                            <h3 class="book-title"><?= htmlspecialchars($livre->getTitre()) ?></h3>
+                            <p class="book-author"><?= htmlspecialchars($livre->getAuteur()) ?></p>
+                            <p class="book-description"><?= htmlspecialchars($livre->getDescription()) ?></p>
 
-                            <h3 class="book-title"><?= htmlspecialchars($livre['titre']) ?></h3>
-                            <p class="book-author"><?= htmlspecialchars($livre['auteur']) ?></p>
-                            <p class="book-description"><?= htmlspecialchars($livre['description']) ?></p>
-
-                            <a class="btn" href="index.php?page=details-livre&id=<?= (int)$livre['id'] ?>">
-                                Voir le détail
+                            <a class="btn" href="index.php?action=details-livre&id=<?= (int) $livre->getId() ?>">
+                                voir le détail
                             </a>
                         </article>
                     <?php endforeach; ?>

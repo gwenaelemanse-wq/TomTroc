@@ -1,54 +1,68 @@
 <?php
 
-class LivreManager
+class LivreManager extends BaseManager
 {
-    public function __construct(private PDO $pdo) {}
+    private PDO $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = DBManager::getInstance()->getPDO();
+    }
+
+    // findAll(), findOne()...
+
 
     public function findAll(): array
     {
-        $sql = "
-            SELECT
-                l.id,
-                l.titre,
-                l.auteur,
-                l.image,
-                l.description,
-                l.statut,
-                l.date_creation,
-                l.user_id,
-                u.pseudo
-            FROM livres l
-            JOIN users u ON u.id_user = l.user_id
-            ORDER BY l.date_creation DESC
-        ";
+        $sql = "SELECT * FROM livres";
 
         $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $livres = [];
+
+        foreach ($data as $row) {
+            $livre = new LivreEntity();
+            $livre->setId($row['id']);
+            $livre->setTitre($row['titre']);
+            $livre->setAuteur($row['auteur']);
+            $livre->setImage($row['image']);
+            $livre->setDescription($row['description']);
+            $livre->setUserId($row['user_id']);
+
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
     }
 
-    public function findOne(int $id): ?array
-    {
-        $sql = "
-            SELECT
-                l.id,
-                l.titre,
-                l.auteur,
-                l.image,
-                l.description,
-                l.statut,
-                l.date_creation,
-                l.user_id,
-                u.pseudo
-            FROM livres l
-            JOIN users u ON u.id_user = l.user_id
-            WHERE l.id = :id
-            LIMIT 1
-        ";
 
+    public function findOne(int $id): ?LivreEntity
+    {
+        $sql = "SELECT * FROM livres WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
 
-        $livre = $stmt->fetch();
-        return $livre ?: null;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        $livre = new LivreEntity();
+        $livre->setId($row['id']);
+        $livre->setTitre($row['titre']);
+        $livre->setAuteur($row['auteur']);
+        $livre->setImage($row['image']);
+        $livre->setDescription($row['description']);
+        $livre->setStatut($row['statut']);
+        $livre->setDateCreation($row['date_creation']);
+        $livre->setUserId($row['user_id']);
+        $livre->setAvatar($row['avatar']);
+        $livre->setPseudo($row['pseudo']);
+
+
+        return $livre;
     }
 }

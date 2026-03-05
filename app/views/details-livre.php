@@ -53,7 +53,7 @@
 
         <div class="details-livre-container">
             <p class="details-breadcrumb">
-                Nos livres &gt; <?= htmlspecialchars($livre['titre']) ?>
+                Nos livres &gt; <?= htmlspecialchars($livre->getTitre()) ?>
             </p>
 
             <div class="details-livre-grid">
@@ -61,8 +61,8 @@
                 <div class="details-livre-image">
 
                     <img
-                        src="<?= htmlspecialchars($livre['image']) ?>"
-                        alt="<?= htmlspecialchars($livre['titre']) ?>"
+                        src="<?= htmlspecialchars($livre->getImage()) ?>"
+                        alt="<?= htmlspecialchars($livre->getTitre()) ?>"
                         class="details-livre-image">
 
                 </div>
@@ -70,24 +70,24 @@
                 <section class="details-livre-section">
                     <div class="details-livre-info">
                         <div class="details-livre-info-inner">
-                            <h1 class="details-livre-title"><?= htmlspecialchars($livre['titre']) ?></h1>
+                            <h1 class="details-livre-title"><?= htmlspecialchars($livre->getTitre()) ?></h1>
 
-                            <p class="details-livre-author">Par <?= htmlspecialchars($livre['auteur']) ?></p>
+                            <p class="details-livre-author">Par <?= htmlspecialchars($livre->getAuteur()) ?></p>
 
-                            <p class="details-livre-description"><?= nl2br(htmlspecialchars($livre['description'])) ?></p>
+                            <p class="details-livre-description"><?= nl2br(htmlspecialchars($livre->getDescription())) ?></p>
 
                             <div class="details-owner">
                                 <h2>PROPRIÉTAIRE</h2>
 
-                                <a href="index.php?page=compte-public&id=<?= (int)($livre['owner_id'] ?? 0) ?>">
+                                <a href="index.php?page=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
                                     <img
-                                        src="<?= htmlspecialchars($livre['owner_avatar'] ?? 'assets/images/Group12.png') ?>"
+                                        src="<?= htmlspecialchars($livre->getUserId() ?? 'assets/images/Group12.png') ?>"
                                         alt="Avatar du propriétaire"
                                         class="owner-avatar">
                                 </a>
                             </div>
 
-                            <a href="index.php?page=messagerie&conversation=<?= (int)($livre['owner_id'] ?? 0) ?>" class="btn-contact">
+                            <a href="index.php?page=messagerie&conversation=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">
                                 Envoyer un message
                             </a>
                         </div>

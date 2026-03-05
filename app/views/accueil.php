@@ -21,9 +21,9 @@
                 <!-- Menu principal (desktop à gauche) -->
                 <nav class="nav-primary">
                     <ul>
-                        <li><a href="index.php?page=accueil">Accueil</a></li>
+                        <li><a href="index.php?action=accueil">Accueil</a></li>
                         <li>
-                            <a href="index.php?page=livres">Nos livres à l’échange</a>
+                            <a href="index.php?action=livres">Nos livres à l’échange</a>
                         </li>
                     </ul>
                 </nav>
@@ -38,9 +38,9 @@
             <div class="header-nav">
                 <nav class="nav-secondary">
                     <ul>
-                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
-                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
-                        <li><a href="index.php?page=connexion">Connexion</a></li>
+                        <li><a href="index.php?action=messagerie">Messagerie</a></li>
+                        <li><a href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?action=connexion">Connexion</a></li>
                     </ul>
                 </nav>
             </div>
@@ -61,7 +61,7 @@
                         Nous croyons en la magie du partage de connaissances<br />
                         et d'histoires à travers les livres. </p>
 
-                    <a href="index.php?page=livres" class="btn-discover">Découvrir</a>
+                    <a href="index.php?action=livres" class="btn-discover">Découvrir</a>
 
 
                 </div>
@@ -106,7 +106,7 @@
 
                 </div>
             </div>
-            <a href="index.php?page=livres" class="btn-view-all">Voir tous les livres</a>
+            <a href="index.php?action=livres" class="btn-view-all">Voir tous les livres</a>
         </section>
         <section class="fonction-description">
             <div class="container">
@@ -131,7 +131,7 @@
 
                     </div>
                 </div>
-                <a href="index.php?page=livres" class="btn-get-started">Commencer à échanger</a>
+                <a href="index.php?action=livres" class="btn-get-started">Commencer à échanger</a>
             </div>
         </section>
         <div class="photo">

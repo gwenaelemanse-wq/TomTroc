@@ -1,48 +1,42 @@
 <?php
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-$page = $_GET['page'] ?? 'accueil';
+require_once __DIR__ . '/../app/config/config.php';
+require_once __DIR__ . '/../app/config/autoload.php';
+require_once __DIR__ . '/../app/services/Utils.php';
 
-$allowedPages = [
-    'accueil',
-    'livres',
-    'details-livre',
-    'connexion',
-    'inscription',
-    'messagerie',
-    'mon-compte',
-    'compte-public',
-    'editer'
-];
+/*/
+ * Système d'autoload.
+ * A chaque fois que PHP va avoir besoin d'une classe, il va appeler cette fonction
+ * et chercher dnas les divers dossiers (ici models, controllers, views, services) s'il trouve
+ * un fichier avec le bon nom. Si c'est le cas, il l'inclut avec require_once.
+ */
+$action = Utils::request('action', 'accueil');
 
-if (!in_array($page, $allowedPages, true)) {
-    $page = 'accueil';
+switch ($action) {
+    case 'livres':
+        $livresController = new LivresController();
+        $livresController->index();
+        break;
+
+    case 'details-livre':
+        $id = (int) Utils::request('id', 0);
+        $livresController = new LivresController();
+        $livresController->show($id);
+        break;
+
+    case 'messagerie':
+        require_once __DIR__ . '/../app/views/messagerie.php';
+        break;
+
+    case 'mon-compte':
+        require __DIR__ . '/../app/views/mon-compte.php';
+        break;
+
+    default:
+        require __DIR__ . '/../app/views/accueil.php';
+        break;
 }
-
-// Controllers (simple, sans autoload pour l’instant)
-require_once __DIR__ . '/../app/controllers/LivresController.php';
-
-// Si c'est la page livres, on passe par le controller
-if ($page === 'livres') {
-    $controller = new LivresController();
-    $controller->index();
-    exit;
-}
-if ($page === 'details-livre') {
-    $controller = new LivresController();
-    $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-    $controller->show($id);
-    exit;
-}
-
-$viewPath = __DIR__ . '/../app/views/' . $page . '.php';
-
-if (!file_exists($viewPath)) {
-    http_response_code(404);
-    echo "Page introuvable";
-    exit;
-}
-
-
-
-require $viewPath;
