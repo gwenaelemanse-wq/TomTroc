@@ -68,4 +68,73 @@ class LivreManager extends BaseManager
 
         return $livre;
     }
+
+    public function findLastAdded(): array  // ← Retourne un ARRAY, pas un seul livre!
+    {
+        $sql = "SELECT * FROM livres ORDER BY date_creation DESC LIMIT 4";
+
+        $stmt = $this->pdo->query($sql);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);  // ← fetchAll() pour plusieurs lignes
+
+        $livres = [];
+
+        foreach ($data as $row) {
+            $livre = new LivreEntity();
+            $livre->setId($row['id']);
+            $livre->setTitre($row['titre']);
+            $livre->setAuteur($row['auteur']);
+            $livre->setImage($row['image']);
+            $livre->setPseudo($row['pseudo'] ?? '');
+
+
+
+            $livre->setUserId($row['user_id']);
+
+            $livres[] = $livre;  // ← Ajoute chaque livre à l'array
+        }
+
+        return $livres;  // ← Retourne un array de LivreEntity
+    }
+
+    public function addLivre(LivreEntity $livre): void
+    {
+        $sql = "INSERT INTO livres (titre, auteur, image, description, user_id) VALUES (:titre, :auteur, :image, :description, :user_id)";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'titre' => $livre->getTitre(),
+            'auteur' => $livre->getAuteur(),
+            'image' => $livre->getImage(),
+            'description' => $livre->getDescription(),
+            'user_id' => $livre->getUserId()
+        ]);
+
+        $livre->setId((int)$this->pdo->lastInsertId());
+    }
+
+    public function findLivresByUserId(int $userId): array
+    {
+        $sql = "SELECT * FROM livres WHERE user_id = :userId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['userId' => $userId]);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $livres = [];
+
+        foreach ($data as $row) {
+            $livre = new LivreEntity();
+            $livre->setId($row['id']);
+            $livre->setTitre($row['titre']);
+            $livre->setAuteur($row['auteur']);
+            $livre->setImage($row['image']);
+            $livre->setStatut($row['statut']);
+            $livre->setDescription($row['description']);
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
+    }
 }

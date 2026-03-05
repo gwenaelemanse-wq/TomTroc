@@ -12,8 +12,10 @@ class LivresController
 
     public function index(): void
     {
+
         $livres = $this->manager->findAll();
-        require __DIR__ . '/../views/livres.php';
+        $viewFile = __DIR__ . '/../views/livres.php';
+        require __DIR__ . '/../views/layout.php';
     }
 
     public function show(int $id): void
@@ -26,6 +28,22 @@ class LivresController
             return;
         }
 
-        require __DIR__ . '/../views/details-livre.php';
+        $viewFile = __DIR__ . '/../views/details-livre.php';
+        require __DIR__ . '/../views/layout.php';
+    }
+
+    public function showLastAdded(): void
+    {
+        $pageTitle = 'TomTroc - Accueil';
+        $livres = $this->manager->findLastAdded();
+        $viewFile = __DIR__ . '/../views/accueil-content.php';
+        require __DIR__ . '/../views/layout.php';  // ← Le layout enveloppe tout
+    }
+
+    public function showLivresByUser(int $userId): void
+    {
+        $livres = $this->manager->findLivresByUserId($userId);
+        $viewFile = __DIR__ . '/../views/livres-by-user.php';
+        require __DIR__ . '/../views/layout.php';
     }
 }

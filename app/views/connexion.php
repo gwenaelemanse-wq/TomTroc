@@ -53,6 +53,8 @@
 
                 <h2 class="connexion-title">Connexion</h2>
 
+
+
                 <form class="connexion-form" action="#" method="post">
                     <div class="form-group">
                         <label for="email">Adresse email</label>

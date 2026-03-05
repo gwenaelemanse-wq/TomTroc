@@ -28,13 +28,23 @@ switch ($action) {
         $livresController->show($id);
         break;
 
+    case 'accueil':
+        $livresController = new LivresController();
+        $livresController->showLastAdded();
+        break;  // ← Appelle la méthode du contrôleur!
+
+    case 'mon-compte':
+        $id = (int) Utils::request('id', 0);
+        $userController = new UsersController();
+        $userController->showMonCompte();
+        break;
+
+
     case 'messagerie':
         require_once __DIR__ . '/../app/views/messagerie.php';
         break;
 
-    case 'mon-compte':
-        require __DIR__ . '/../app/views/mon-compte.php';
-        break;
+
 
     default:
         require __DIR__ . '/../app/views/accueil.php';
