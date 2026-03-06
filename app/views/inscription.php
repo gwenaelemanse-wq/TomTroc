@@ -53,7 +53,11 @@
 
                 <h2 class="inscription-title">Inscription</h2>
 
-                <form class="inscription-form" action="#" method="post">
+                <?php if (!empty($error)): ?>
+                    <p class="inscription-error"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
+
+                <form class="inscription-form" action="index.php?action=inscription" method="post">
                     <div class="form-group">
                         <label for="pseudo">Pseudo</label>
                         <input type="text" id="pseudo" name="pseudo" required>

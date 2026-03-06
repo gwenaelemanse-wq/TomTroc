@@ -3,12 +3,12 @@
 class UserEntity
 {
     private ?int $id = null;
-    private string $prenom;
-    private string $nom;
+    private string $prenom = '';
+    private string $nom = '';
     private string $pseudo;
     private string $email;
-    private string $avatar;
-    private string $dateInscription;
+    private string $avatar = '';
+    private string $dateInscription = '';
     private string $password = '';
     private int $nbrLivres = 0;
 

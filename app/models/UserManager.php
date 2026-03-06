@@ -46,8 +46,8 @@ class UserManager extends BaseManager
     }
     public function addUser(UserEntity $user): void
     {
-        $sql = "INSERT INTO users (prenom, nom, pseudo, email, avatar, date_creat_compte) 
-                VALUES (:prenom, :nom, :pseudo, :email, :avatar, :date_creat_compte)";
+        $sql = "INSERT INTO users (prenom, nom, pseudo, email, avatar, mot_de_passe, date_creat_compte) 
+                VALUES (:prenom, :nom, :pseudo, :email, :avatar, :mot_de_passe, :date_creat_compte)";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
@@ -56,6 +56,7 @@ class UserManager extends BaseManager
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
             'avatar' => $user->getAvatar(),
+            'mot_de_passe' => $user->getPassword(),
             'date_creat_compte' => $user->getInscription()
         ]);
 
@@ -112,7 +113,7 @@ class UserManager extends BaseManager
     public function findByPseudo(string $pseudo): ?UserEntity
     {
         $sql = "SELECT * FROM users WHERE pseudo = :pseudo";
-        $stmt = $this->db->getPDO()->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['pseudo' => $pseudo]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
