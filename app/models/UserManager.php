@@ -8,6 +8,7 @@ class UserManager extends BaseManager
     {
         $this->pdo = DBManager::getInstance()->getPDO();
     }
+
     public function getAvatarByUserId(int $userId): ?string
     {
         $sql = "SELECT avatar FROM users WHERE id_user = :userId";
@@ -46,8 +47,8 @@ class UserManager extends BaseManager
     }
     public function addUser(UserEntity $user): void
     {
-        $sql = "INSERT INTO users (prenom, nom, pseudo, email, avatar, date_creat_compte) 
-                VALUES (:prenom, :nom, :pseudo, :email, :avatar, :date_creat_compte)";
+        $sql = "INSERT INTO users (prenom, nom, pseudo, email, avatar, date_creat_compte, mot_de_passe) 
+                VALUES (:prenom, :nom, :pseudo, :email, :avatar, :date_creat_compte, :mot_de_passe)";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
@@ -56,7 +57,8 @@ class UserManager extends BaseManager
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
             'avatar' => $user->getAvatar(),
-            'date_creat_compte' => $user->getInscription()
+            'date_creat_compte' => $user->getInscription(),
+            'mot_de_passe' => $user->getPassword()
         ]);
 
         $user->setId((int)$this->pdo->lastInsertId());
@@ -85,10 +87,32 @@ class UserManager extends BaseManager
         return $user;
     }
 
+    public function findByEmail(string $email): ?UserEntity
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
+        $user = new UserEntity();
+        $user->setId($row['id_user']);
+        $user->setPrenom($row['prenom']);
+        $user->setNom($row['nom']);
+        $user->setPseudo($row['pseudo']);
+        $user->setEmail($row['email']);
+        $user->setAvatar($row['avatar'] ?? '');
+        $user->setInscription($row['date_creat_compte']);
+        $user->setPassword($row['mot_de_passe'] ?? '');
+        return $user;
+    }
+
+
     public function findByPseudo(string $pseudo): ?UserEntity
     {
         $sql = "SELECT * FROM users WHERE pseudo = :pseudo";
-        $stmt = $this->db->getPDO()->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['pseudo' => $pseudo]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 

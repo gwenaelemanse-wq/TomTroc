@@ -14,7 +14,9 @@ class LivreManager extends BaseManager
 
     public function findAll(): array
     {
-        $sql = "SELECT * FROM livres";
+        $sql = "SELECT l.*, u.pseudo
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user";
 
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,6 +30,7 @@ class LivreManager extends BaseManager
             $livre->setAuteur($row['auteur']);
             $livre->setImage($row['image']);
             $livre->setDescription($row['description']);
+            $livre->setPseudo($row['pseudo'] ?? '');
             $livre->setUserId($row['user_id']);
 
 
@@ -71,7 +74,10 @@ class LivreManager extends BaseManager
 
     public function findLastAdded(): array  // ← Retourne un ARRAY, pas un seul livre!
     {
-        $sql = "SELECT * FROM livres ORDER BY date_creation DESC LIMIT 4";
+        $sql = "SELECT l.*, u.pseudo
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user
+            ORDER BY l.date_creation DESC LIMIT 4";
 
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);  // ← fetchAll() pour plusieurs lignes
@@ -136,5 +142,32 @@ class LivreManager extends BaseManager
         }
 
         return $livres;
+    }
+
+    public function updateStatut(int $livreId, string $statut): void
+    {
+        $sql = "UPDATE livres SET statut = :statut WHERE id = :livreId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'statut' => $statut,
+            'livreId' => $livreId
+        ]);
+    }
+
+    public function getFirstDescriptionLine(int $livreId): ?string
+    {
+        $sql = "SELECT description FROM livres WHERE id = :livreId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['livreId' => $livreId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && isset($result['description'])) {
+            $description = $result['description'];
+            $lines = explode("\n", $description);
+            return trim($lines[0]);
+        }
+
+        return null;
     }
 }

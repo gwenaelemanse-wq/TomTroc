@@ -3,12 +3,13 @@
 class UserEntity
 {
     private ?int $id = null;
-    private string $prenom;
-    private string $nom;
+    private string $prenom = '';
+    private string $nom = '';
     private string $pseudo;
     private string $email;
-    private string $avatar;
-    private string $dateInscription;
+    private string $password;
+    private string $avatar = '';
+    private string $dateInscription = '';
     private int $nbrLivres = 0;
 
     public function setId(int $id): void
@@ -39,6 +40,16 @@ class UserEntity
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
     public function setAvatar(string $avatar): void

@@ -39,6 +39,15 @@ switch ($action) {
         $userController->showMonCompte();
         break;
 
+    case 'connexion':
+        $userController = new UsersController();
+        $userController->login();
+        break;
+
+    case 'inscription':
+        $userController = new UsersController();
+        $userController->register();
+        break;
 
     case 'messagerie':
         require_once __DIR__ . '/../app/views/messagerie.php';

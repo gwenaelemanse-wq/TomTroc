@@ -43,7 +43,14 @@ class LivresController
     public function showLivresByUser(int $userId): void
     {
         $livres = $this->manager->findLivresByUserId($userId);
-        $viewFile = __DIR__ . '/../views/livres-by-user.php';
+        $viewFile = __DIR__ . '/../views/compte-public.php';
+        require __DIR__ . '/../views/layout.php';
+    }
+
+    public function showFirstDescriptionLine(int $livreId): void
+    {
+        $livres = $this->manager->getFirstDescriptionLine($livreId);
+        $viewFile = __DIR__ . '/../views/compte-public.php';
         require __DIR__ . '/../views/layout.php';
     }
 }

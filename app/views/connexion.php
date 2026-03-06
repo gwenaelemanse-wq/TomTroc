@@ -10,52 +10,19 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-content">
 
-            <div class="header-left">
-                <a class="logo" href="index.php?page=accueil">
-                    <img src="assets/images/logo@2x.png" alt="Logo de TomTroc">
-                </a>
-
-                <!-- Menu principal (desktop à gauche) -->
-                <nav class="nav-primary">
-                    <ul>
-                        <li><a href="index.php?page=accueil">Accueil</a></li>
-                        <li>
-                            <a href="index.php?page=livres">Nos livres à l’échange</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-
-            <!-- Burger (visible seulement en mobile via CSS) -->
-            <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
-                ☰
-            </button>
-
-            <!-- Wrapper qui contient le menu de droite + (en mobile) on met aussi le menu de gauche dedans via CSS -->
-            <div class="header-nav">
-                <nav class="nav-secondary">
-                    <ul>
-                        <li><a href="index.php?page=messagerie">Messagerie</a></li>
-                        <li><a href="index.php?page=mon-compte">Mon compte</a></li>
-                        <li><a href="index.php?page=connexion">Connexion</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-        </div>
-    </header>
     <main class="connexion-page">
         <div class="connexion-container">
             <section class="connexion-section">
 
                 <h2 class="connexion-title">Connexion</h2>
 
+                <?php if (!empty($error)): ?>
+                    <p class="connexion-error"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
 
+                <form class="connexion-form" action="index.php?action=connexion" method="post">
 
-                <form class="connexion-form" action="#" method="post">
                     <div class="form-group">
                         <label for="email">Adresse email</label>
                         <input type="email" id="email" name="email" required>
@@ -68,7 +35,7 @@
                         <button type="submit">Se connecter</button>
                     </div>
                     <div class="register-link">
-                        <p>Pas de compte ? <a href="index.php?page=inscription">Inscrivez-vous!</a></p>
+                        <p>Pas de compte ? <a href="index.php?action=inscription">Inscrivez-vous!</a></p>
                     </div>
                 </form>
             </section>
@@ -80,20 +47,7 @@
 
 
     </main>
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <nav class="footer-nav">
-                <ul>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Mentions légales</a></li>
-                    <li><a href="#">Tom Troc©</a></li>
-                </ul>
-                <a class="logo-initiales" href="assets/images/Group10.png">
-                    <img src="assets/images/Group10.png" alt="Initiales TomTroc">
-                </a>
-            </nav>
-        </div>
-    </footer>
+
 
 </body>
 
