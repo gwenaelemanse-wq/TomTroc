@@ -53,9 +53,11 @@
 
                 <h2 class="connexion-title">Connexion</h2>
 
+                <?php if (!empty($error)): ?>
+                    <p class="connexion-error"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
 
-
-                <form class="connexion-form" action="#" method="post">
+                <form class="connexion-form" action="index.php?action=connexion" method="post">
                     <div class="form-group">
                         <label for="email">Adresse email</label>
                         <input type="email" id="email" name="email" required>

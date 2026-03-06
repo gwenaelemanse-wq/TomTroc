@@ -85,6 +85,30 @@ class UserManager extends BaseManager
         return $user;
     }
 
+    public function findByEmail(string $email): ?UserEntity
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        $user = new UserEntity();
+        $user->setId($row['id_user']);
+        $user->setPrenom($row['prenom']);
+        $user->setNom($row['nom']);
+        $user->setPseudo($row['pseudo']);
+        $user->setEmail($row['email']);
+        $user->setAvatar($row['avatar'] ?? '');
+        $user->setInscription($row['date_creat_compte']);
+        $user->setPassword($row['mot_de_passe'] ?? '');
+
+        return $user;
+    }
+
     public function findByPseudo(string $pseudo): ?UserEntity
     {
         $sql = "SELECT * FROM users WHERE pseudo = :pseudo";

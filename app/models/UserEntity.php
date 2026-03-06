@@ -9,6 +9,7 @@ class UserEntity
     private string $email;
     private string $avatar;
     private string $dateInscription;
+    private string $password = '';
     private int $nbrLivres = 0;
 
     public function setId(int $id): void
@@ -89,5 +90,15 @@ class UserEntity
     public function getNbrLivres(): int
     {
         return $this->nbrLivres;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }

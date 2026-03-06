@@ -26,4 +26,27 @@ class UsersController
         $viewFile = __DIR__ . '/../views/mon-compte.php';
         require __DIR__ . '/../views/layout.php';
     }
+
+    public function login(): void
+    {
+        $error = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email    = trim(Utils::request('email', ''));
+            $password = Utils::request('password', '');
+
+            $user = $this->manager->findByEmail($email);
+
+            if ($user !== null && password_verify($password, $user->getPassword())) {
+                $_SESSION['user_id']     = $user->getId();
+                $_SESSION['user_pseudo'] = $user->getPseudo();
+                Utils::redirect('accueil');
+                return;
+            }
+
+            $error = 'Email ou mot de passe incorrect.';
+        }
+
+        require __DIR__ . '/../views/connexion.php';
+    }
 }
