@@ -38,6 +38,7 @@
                             <h3 class="book-title"><?= htmlspecialchars($livre->getTitre()) ?></h3>
                             <p class="book-author"><?= htmlspecialchars($livre->getAuteur()) ?></p>
                             <p class="book-description"><?= htmlspecialchars($livre->getDescription()) ?></p>
+                            <p class="book-pseudo">Vendu par : <?= htmlspecialchars($livre->getPseudo()) ?></p>
                         </article>
                     <?php endforeach; ?>
                 </div>

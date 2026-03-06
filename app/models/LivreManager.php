@@ -14,7 +14,9 @@ class LivreManager extends BaseManager
 
     public function findAll(): array
     {
-        $sql = "SELECT * FROM livres";
+        $sql = "SELECT l.*, u.pseudo
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user";
 
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +31,7 @@ class LivreManager extends BaseManager
             $livre->setImage($row['image']);
             $livre->setDescription($row['description']);
             $livre->setUserId($row['user_id']);
-
+            $livre->setPseudo($row['pseudo'] ?? '');
 
             $livres[] = $livre;
         }
@@ -71,7 +73,10 @@ class LivreManager extends BaseManager
 
     public function findLastAdded(): array  // ← Retourne un ARRAY, pas un seul livre!
     {
-        $sql = "SELECT * FROM livres ORDER BY date_creation DESC LIMIT 4";
+        $sql = "SELECT l.*, u.pseudo
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user
+            ORDER BY l.date_creation DESC LIMIT 4";
 
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);  // ← fetchAll() pour plusieurs lignes
