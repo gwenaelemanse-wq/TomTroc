@@ -38,7 +38,7 @@ class UsersController
             if ($user !== null && password_verify($password, $user->getPassword())) {
                 $_SESSION['user_id']     = $user->getId();
                 $_SESSION['user_pseudo'] = $user->getPseudo();
-                Utils::redirect('accueil');
+                Utils::redirect('mon-compte', ['id' => $user->getId()]);
                 return;
             }
             $error = 'Email ou mot de passe incorrect.';
@@ -77,7 +77,7 @@ class UsersController
                 $this->manager->addUser($user);
                 $_SESSION['user_id']     = $user->getId();
                 $_SESSION['user_pseudo'] = $user->getPseudo();
-                Utils::redirect('accueil');
+                Utils::redirect('mon-compte', ['id' => $user->getId()]);
                 return;
             }
         }

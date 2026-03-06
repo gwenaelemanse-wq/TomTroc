@@ -27,7 +27,7 @@
                 <nav class="nav-secondary">
                     <ul>
                         <li><a href="index.php?action=messagerie">Messagerie</a></li>
-                        <li><a href="index.php?action=mon-compte">Mon compte</a></li>
+                        <li><a href="index.php?action=mon-compte<?= isset($_SESSION['user_id']) ? '&id=' . (int)$_SESSION['user_id'] : '' ?>">Mon compte</a></li>
                         <li><a href="index.php?action=connexion">Connexion</a></li>
                     </ul>
                 </nav>
