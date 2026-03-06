@@ -40,7 +40,7 @@ class UsersController
             if ($user !== null && password_verify($password, $user->getPassword())) {
                 $_SESSION['user_id']     = $user->getId();
                 $_SESSION['user_pseudo'] = $user->getPseudo();
-                Utils::redirect('accueil');
+                Utils::redirect('mon-compte', ['id' => $user->getId()]);
                 return;
             }
 
@@ -80,7 +80,7 @@ class UsersController
 
                 $_SESSION['user_id']     = $user->getId();
                 $_SESSION['user_pseudo'] = $user->getPseudo();
-                Utils::redirect('accueil');
+                Utils::redirect('mon-compte', ['id' => $user->getId()]);
                 return;
             }
         }
