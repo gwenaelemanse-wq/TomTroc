@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Compte</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/menu.js" defer></script>
-</head>
-
-<body>
-
-    <main class="mon-compte-page">
+<div class="mon-compte-page">
         <div class="mon-compte-container">
             <section class="mon-compte-section">
 
@@ -41,18 +28,17 @@
                         </div>
                     </div>
                     <div class="mon-compte-livres">
-
-                        <thead>
-                            <tr>
-                                <th>PHOTO</th>
-                                <th>TITRE</th>
-                                <th>AUTEUR</th>
-                                <th>DESCRIPTION</th>
-                                <th>DISPONIBILITÉ</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
                         <table class="mon-compte-livres-table">
+                            <thead>
+                                <tr>
+                                    <th>PHOTO</th>
+                                    <th>TITRE</th>
+                                    <th>AUTEUR</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>DISPONIBILITÉ</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <?php foreach ($livres as $livre) : ?>
                                     <tr>
@@ -70,8 +56,4 @@
                 </div>
             </section>
         </div>
-    </main>
-
-</body>
-
-</html>
+    </div>
