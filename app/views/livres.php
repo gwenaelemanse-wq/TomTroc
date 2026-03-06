@@ -29,17 +29,15 @@
 
                     <?php foreach ($livres as $livre): ?>
                         <article class="book-card">
-                            <img
-                                class="book-card-img"
-                                src="<?= htmlspecialchars($livre->getImage()) ?>"
-                                alt="<?= htmlspecialchars($livre->getTitre()) ?>">
+                            <a href="index.php?action=details-livre&id=<?= (int) $livre->getId() ?>">
+                                <img
+                                    class="book-card-img"
+                                    src="<?= htmlspecialchars($livre->getImage()) ?>"
+                                    alt="<?= htmlspecialchars($livre->getTitre()) ?>">
+                            </a>
                             <h3 class="book-title"><?= htmlspecialchars($livre->getTitre()) ?></h3>
                             <p class="book-author"><?= htmlspecialchars($livre->getAuteur()) ?></p>
                             <p class="book-description"><?= htmlspecialchars($livre->getDescription()) ?></p>
-
-                            <a class="btn" href="index.php?action=details-livre&id=<?= (int) $livre->getId() ?>">
-                                voir le détail
-                            </a>
                         </article>
                     <?php endforeach; ?>
                 </div>
