@@ -4,6 +4,7 @@
 
                 <h2 class="mon-compte">Mon Compte</h2>
                 <div class="mon-compte-grid">
+                    <?php foreach ($users as $user) : ?>
                     <div class="mon-compte-profil">
                         <img src="<?= htmlspecialchars($user->getAvatar()) ?>" alt="Photo de profil" class="mon-compte-photo">
                         <div class="photo-wrapper">
@@ -27,6 +28,7 @@
                             </p>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                     <div class="mon-compte-livres">
                         <table class="mon-compte-livres-table">
                             <thead>
