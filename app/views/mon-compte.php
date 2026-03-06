@@ -18,13 +18,13 @@
                 <h2 class="mon-compte">Mon Compte</h2>
                 <div class="mon-compte-grid">
                     <div class="mon-compte-profil">
-                        <img src="assets/images/photo.png" alt="Photo de profil" class="mon-compte-photo">
+                        <img src="<?= htmlspecialchars($user->getAvatar()) ?>" alt="Photo de profil" class="mon-compte-photo">
                         <div class="photo-wrapper">
                             <img src="assets/images/Line5.png" alt="Ligne de séparation" class="mon-compte-ligne">
                         </div>
-                        <p class="mon-compte-pseudo"><?php htmlspecialchars($user->getPseudo()); ?></p>
-                        <p class="mon-compte-timeMember">Membre depuis: <?php htmlspecialchars($user->getInscription()); ?></p>
-                        <p class="mon-compte-nbrLivres"><?php htmlspecialchars($user->getNbrLivres()); ?> livres</p>
+                        <p class="mon-compte-pseudo"><?= htmlspecialchars($user->getPseudo()) ?></p>
+                        <p class="mon-compte-timeMember">Membre depuis: <?= htmlspecialchars($user->getInscription()) ?></p>
+                        <p class="mon-compte-nbrLivres"><?= htmlspecialchars($user->getNbrLivres()) ?> livres</p>
                     </div>
                     <div class="mon-compte-info">
                         <h1 class="mon-compte-info">Vos informations personnelles</h1>

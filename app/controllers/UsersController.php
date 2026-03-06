@@ -17,8 +17,9 @@ class UsersController
         $livreManager = new LivreManager();
         $livres = $livreManager->findLivresByUserId($id);
 
-
-
+        if ($user !== null) {
+            $user->setNbrLivres(count($livres));
+        }
 
         $viewFile = __DIR__ . '/../views/mon-compte.php';
         require __DIR__ . '/../views/layout.php';
