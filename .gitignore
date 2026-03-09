@@ -1,0 +1,11 @@
+# Fichiers uploadés par les utilisateurs (ne pas versionner)
+public/uploads/*
+
+# Mais on garde les dossiers (via .gitkeep)
+!public/uploads/.gitkeep
+!public/uploads/avatars/.gitkeep
+
+# (optionnel) fichiers système / éditeur
+.DS_Store
+Thumbs.db
+.vscode/
