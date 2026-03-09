@@ -37,5 +37,6 @@
         <input type="file" id="image_file" name="image_file" accept="image/*">
     </div>
 
+
     <button type="submit"><?= $mode === 'edit' ? 'Enregistrer' : 'Ajouter' ?></button>
 </form>

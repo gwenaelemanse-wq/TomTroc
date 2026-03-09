@@ -26,6 +26,10 @@
                         <?php foreach ($users as $user) : ?>
                             <div class="mon-compte-profil">
                                 <form action="index.php?action=update-avatar" method="post" enctype="multipart/form-data">
+                                    <img
+                                        id="avatarPreview"
+                                        src="<?= htmlspecialchars(!empty($avatar) ? $avatar : 'assets/images/placeholder-avatar.png') ?>"
+                                        alt="Photo de profil">
                                     <div>
                                         <label for="avatar_url">Avatar via URL (optionnel)</label>
                                         <input type="text" id="avatar_url" name="avatar_url" placeholder="https://... ou assets/images/...">
@@ -55,6 +59,41 @@
                                 <button class="mon-compte-edit">Enregister</button>
                             </div>
                         <?php endforeach; ?>
+
+                        <script>
+                            (function() {
+                                const input = document.getElementById('avatar_file');
+                                const img = document.getElementById('avatarPreview');
+                                if (!input || !img) return;
+
+                                input.addEventListener('change', function() {
+                                    const file = this.files && this.files[0];
+                                    if (!file) return;
+
+                                    if (!file.type || !file.type.startsWith('image/')) {
+                                        alert("Veuillez choisir une image.");
+                                        this.value = '';
+                                        return;
+                                    }
+
+                                    const url = URL.createObjectURL(file);
+                                    img.src = url;
+                                    img.onload = () => URL.revokeObjectURL(url);
+                                });
+                            })();
+                        </script>
+                        <script>
+                            (function() {
+                                const urlInput = document.getElementById('avatar_url');
+                                const img = document.getElementById('avatarPreview');
+                                if (!urlInput || !img) return;
+
+                                urlInput.addEventListener('input', function() {
+                                    const url = this.value.trim();
+                                    if (url !== '') img.src = url;
+                                });
+                            })();
+                        </script>
 
                         <div class="mon-compte-livres">
 
