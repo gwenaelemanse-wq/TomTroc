@@ -5,9 +5,9 @@ class LivreEntity
     private ?int $id = null;
     private string $titre;
     private string $auteur;
-    private string $image;
+    private ?string $image = null;
     private string $description;
-    private int $statut;
+    private string $statut = 'Disponible';
     private string $dateCreation;
     private int $userId;
     private string $avatar;
@@ -43,14 +43,22 @@ class LivreEntity
         return $this->auteur;
     }
 
-    public function setImage(string $image): void
+    public function setImage(?string $image): void
     {
         $this->image = $image;
     }
-
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
+    }
+
+    public function setStatut(string $statut): void
+    {
+        $this->statut = $statut;
+    }
+    public function getStatut(): string
+    {
+        return $this->statut;
     }
 
     public function setDescription(string $description): void
@@ -63,15 +71,6 @@ class LivreEntity
         return $this->description;
     }
 
-    public function setStatut(int $statut): void
-    {
-        $this->statut = $statut;
-    }
-
-    public function getStatut(): int
-    {
-        return $this->statut;
-    }
 
     public function setDateCreation(string $dateCreation): void
     {

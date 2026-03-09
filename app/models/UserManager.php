@@ -131,4 +131,14 @@ class UserManager extends BaseManager
 
         return $user;
     }
+
+    public function updateAvatar(int $userId, ?string $avatar): void
+    {
+        $sql = "UPDATE users SET avatar = :avatar WHERE id_user = :id_user";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'avatar' => $avatar,
+            'id_user' => $userId,
+        ]);
+    }
 }

@@ -49,6 +49,29 @@ switch ($action) {
         $userController->register();
         break;
 
+    case 'deconnexion':
+        $userController = new UsersController();
+        $userController->logout();
+        break;
+
+    //* commandes fonctionnalitées
+
+    case 'editer':
+        $livresController = new LivresController();
+        $livresController->edit();
+        break;
+
+    case 'supprimer':
+        $livresController = new LivresController();
+        $livresController->deleteLivreByUser();
+        break;
+
+    case 'update-avatar':
+        $usersController = new UsersController();
+        $usersController->updateAvatar();
+        break;
+
+
     case 'messagerie':
         require_once __DIR__ . '/../app/views/messagerie.php';
         break;

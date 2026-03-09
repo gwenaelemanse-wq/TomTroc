@@ -102,21 +102,7 @@ class LivreManager extends BaseManager
         return $livres;  // ← Retourne un array de LivreEntity
     }
 
-    public function addLivre(LivreEntity $livre): void
-    {
-        $sql = "INSERT INTO livres (titre, auteur, image, description, user_id) VALUES (:titre, :auteur, :image, :description, :user_id)";
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'titre' => $livre->getTitre(),
-            'auteur' => $livre->getAuteur(),
-            'image' => $livre->getImage(),
-            'description' => $livre->getDescription(),
-            'user_id' => $livre->getUserId()
-        ]);
-
-        $livre->setId((int)$this->pdo->lastInsertId());
-    }
 
     public function findLivresByUserId(int $userId): array
     {
@@ -169,5 +155,58 @@ class LivreManager extends BaseManager
         }
 
         return null;
+    }
+
+    public function createLivre(LivreEntity $livre): void
+    {
+        $sql = "INSERT INTO livres (titre, auteur, image, description, statut, user_id) VALUES (:titre, :auteur, :image, :description, :statut, :user_id)";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'titre' => $livre->getTitre(),
+            'auteur' => $livre->getAuteur(),
+            'image' => $livre->getImage(),
+            'description' => $livre->getDescription(),
+            'statut' => $livre->getStatut(),
+            'user_id' => $livre->getUserId()
+        ]);
+
+        $livre->setId((int)$this->pdo->lastInsertId());
+    }
+
+    public function updateLivre(LivreEntity $livre): void
+    {
+        $sql = "UPDATE livres
+            SET titre = :titre,
+                auteur = :auteur,
+                image = :image,
+                description = :description,
+                statut = :statut
+            WHERE id = :id
+              AND user_id = :user_id";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'titre' => $livre->getTitre(),
+            'auteur' => $livre->getAuteur(),
+            'image' => $livre->getImage(),
+            'description' => $livre->getDescription(),
+            'statut' => $livre->getStatut(),
+            'id' => $livre->getId(),
+            'user_id' => $livre->getUserId(),
+        ]);
+    }
+
+    public function deleteLivre(int $livreId, int $userId): void
+    {
+        $sql = "DELETE FROM livres
+            WHERE id = :livreId
+              AND user_id = :userId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'livreId' => $livreId,
+            'userId'  => $userId,
+        ]);
     }
 }
