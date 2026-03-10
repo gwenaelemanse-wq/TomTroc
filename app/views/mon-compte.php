@@ -25,23 +25,39 @@
 
                         <?php foreach ($users as $user) : ?>
                             <div class="mon-compte-profil">
-                                <form action="index.php?action=update-avatar" method="post" enctype="multipart/form-data">
+                                <form id="avatarForm" action="index.php?action=update-avatar" method="post" enctype="multipart/form-data">
                                     <img
                                         id="avatarPreview"
-                                        src="<?= htmlspecialchars(!empty($avatar) ? $avatar : 'assets/images/placeholder-avatar.png') ?>"
-                                        alt="Photo de profil">
-                                    <div>
-                                        <label for="avatar_url">Avatar via URL (optionnel)</label>
-                                        <input type="text" id="avatar_url" name="avatar_url" placeholder="https://... ou assets/images/...">
-                                    </div>
+                                        src="<?= htmlspecialchars(!empty($user->getAvatar()) ? $user->getAvatar() : 'assets/images/placeholder.jpg') ?>"
+                                        alt="Photo de profil"
+                                        class="mon-compte-avatar">
 
-                                    <div>
-                                        <label for="avatar_file">Ou importer une image (optionnel)</label>
-                                        <input type="file" id="avatar_file" name="avatar_file" accept="image/*">
-                                    </div>
+                                    <div class="modifier-avatar">
+                                        <!-- Input file caché (le label déclenche le clic) -->
+                                        <input
+                                            type="file"
+                                            id="avatar_file"
+                                            name="avatar_file"
+                                            accept="image/*"
+                                            class="avatar-file-input">
 
-                                    <button type="submit">Modifier l’avatar</button>
+                                        <!-- Lien maquette -->
+                                        <label for="avatar_file" class="avatar-modifier-link">Modifier</label>
+                                    </div>
                                 </form>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const form = document.getElementById('avatarForm');
+                                        const input = form?.querySelector('input[type="file"][name="avatar_file"]');
+                                        console.log('file input found?', !!input);
+                                        if (!form || !input) return;
+
+                                        input.addEventListener('change', () => {
+                                            console.log('file changed', input.files);
+                                            if (input.files && input.files.length > 0) form.submit();
+                                        });
+                                    });
+                                </script>
 
                                 <div class="photo-wrapper">
                                     <img src="assets/images/Line5.png" alt="Ligne de séparation" class="mon-compte-ligne">
@@ -60,40 +76,7 @@
                             </div>
                         <?php endforeach; ?>
 
-                        <script>
-                            (function() {
-                                const input = document.getElementById('avatar_file');
-                                const img = document.getElementById('avatarPreview');
-                                if (!input || !img) return;
 
-                                input.addEventListener('change', function() {
-                                    const file = this.files && this.files[0];
-                                    if (!file) return;
-
-                                    if (!file.type || !file.type.startsWith('image/')) {
-                                        alert("Veuillez choisir une image.");
-                                        this.value = '';
-                                        return;
-                                    }
-
-                                    const url = URL.createObjectURL(file);
-                                    img.src = url;
-                                    img.onload = () => URL.revokeObjectURL(url);
-                                });
-                            })();
-                        </script>
-                        <script>
-                            (function() {
-                                const urlInput = document.getElementById('avatar_url');
-                                const img = document.getElementById('avatarPreview');
-                                if (!urlInput || !img) return;
-
-                                urlInput.addEventListener('input', function() {
-                                    const url = this.value.trim();
-                                    if (url !== '') img.src = url;
-                                });
-                            })();
-                        </script>
 
                         <div class="mon-compte-livres">
 

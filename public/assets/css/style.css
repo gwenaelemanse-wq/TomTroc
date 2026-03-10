@@ -619,6 +619,39 @@ h1 {
   gap: 12px;
 }
 
+/* Avatar gros + rond */
+.mon-compte-avatar {
+  width: 180px; /* ajuste: 160-220 selon ta maquette */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Cacher l'input file natif */
+.avatar-file-input {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* "modifier" comme un lien souligné */
+.avatar-modifier-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #292929; /* ou gris selon maquette */
+  font-size: 12px;
+}
+
+.modifier-avatar {
+  text-align: center;
+}
+
 .mon-compte-pseudo {
   font-family: Playfair Display;
   font-weight: 600;
