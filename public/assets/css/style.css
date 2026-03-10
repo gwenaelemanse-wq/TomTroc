@@ -599,14 +599,10 @@ h1 {
 
 .mon-compte-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
-  gap: 2rem; /* espace entre les blocs */
-  align-items: stretch; /* évite les hauteurs étirées bizarrement */
-  width: 100%;
-  background-color: #faf9f7;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-/* Le bloc livres prend toute la largeur */
 .mon-compte-livres {
   grid-column: 1 / -1;
 }
@@ -668,40 +664,77 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* Bloc infos: garder le titre centré mais le formulaire aligné proprement */
 .mon-compte-info {
   display: flex;
   flex-direction: column;
-  align-items: center; /* on garde le centrage global */
+  text-align: left; /* on garde le centrage global */
+  align-items: center;
 }
 
-/* Le wrapper interne */
-.form-wrapper {
-  width: 100%; /* même largeur que tes inputs */
+.mon-compte-info-form {
+  width: 100%;
   max-width: 420px;
+  padding: 30px 60px;
+}
+
+/* Chaque champ en colonne : label au-dessus de l'input */
+.mon-compte-info-form .form-group {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
-/* Les inputs prennent toute la largeur du wrapper */
-.form-wrapper input {
+.mon-compte-info h1 {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 18px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.mon-compte-info .form-group label {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #a6a6a6;
+}
+
+/* Inputs "bleu clair" comme la maquette */
+.mon-compte-info .form-group input {
   width: 100%;
   border-radius: 8px;
-  padding: 12px;
+  padding: 14px 16px;
   background-color: #edf2f6;
   border: none;
+  outline: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  color: #292929;
+  align-items: center;
 }
 
-.form-wrapper button {
-  margin-top: 20px;
-  padding: 12px;
-  background-color: #f5f3ef;
+/* petit effet focus (optionnel mais joli) */
+.mon-compte-info .form-group input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 172, 102, 0.25);
+}
+
+/* Bouton "Enregistrer" comme maquette */
+.mon-compte-info .form-group .update-profile {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.mon-compte-info-form button.update-profile {
+  background: transparent;
   color: #00ac66;
-  text-decoration: none;
-  font-weight: 600;
-  border-color: #00ac66;
+  border: 1px solid #00ac66;
   border-radius: 8px;
+  padding: 14px 34px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  padding: 22px 38px;
 }
 
 .mon-compte-profil,
@@ -710,26 +743,6 @@ h1 {
   background: #fff;
   padding: 2rem;
   border-radius: 12px;
-}
-
-.mon-compte-info p {
-  font-family: Inter;
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #a6a6a6;
-}
-
-.mon-compte-info h1 {
-  font-family: Inter;
-  font-weight: 600;
-  font-style: Regular;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #292929;
 }
 
 .mon-compte-livres table {
@@ -752,6 +765,15 @@ h1 {
 
 .mon-compte-livres tr:nth-child(even) {
   background-color: #edf2f6;
+}
+
+.mon-compte-livres td.livre-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 4 lignes */
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+  max-height: calc(1.3em * 4);
 }
 
 .status {

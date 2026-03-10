@@ -71,6 +71,11 @@ switch ($action) {
         $usersController->updateAvatar();
         break;
 
+    case 'update-profile':
+        $usersController = new UsersController();
+        $usersController->updateProfile();
+        break;
+
 
     case 'messagerie':
         require_once __DIR__ . '/../app/views/messagerie.php';

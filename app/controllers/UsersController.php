@@ -196,4 +196,29 @@ class UsersController
 
         Utils::redirect('mon-compte', ['id' => $userId]);
     }
+
+    public function updateProfile(): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            Utils::redirect('connexion');
+            return;
+        }
+
+        $userId = (int)$_SESSION['user_id'];
+
+        $email = trim(Utils::request('email', ''));
+        $password = Utils::request('password', '');
+        $pseudo = trim(Utils::request('pseudo', ''));
+
+        if ($email === '' || $pseudo === '') {
+            // Erreur : champs obligatoires manquants
+            Utils::redirect('mon-compte', ['id' => $userId]);
+            return;
+        }
+
+        $userManager = new UserManager();
+        $userManager->updateProfile($userId, $email, $password, $pseudo);
+
+        Utils::redirect('mon-compte', ['id' => $userId]);
+    }
 }

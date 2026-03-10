@@ -141,4 +141,16 @@ class UserManager extends BaseManager
             'id_user' => $userId,
         ]);
     }
+
+    public function updateProfile(int $userId, string $email, string $password, string $pseudo): void
+    {
+        $sql = "UPDATE users SET email = :email, mot_de_passe = :mot_de_passe, pseudo = :pseudo WHERE id_user = :id_user";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'email' => $email,
+            'mot_de_passe' => password_hash($password, PASSWORD_DEFAULT),
+            'pseudo' => $pseudo,
+            'id_user' => $userId,
+        ]);
+    }
 }

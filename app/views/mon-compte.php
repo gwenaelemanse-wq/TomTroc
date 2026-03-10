@@ -5,80 +5,99 @@
 
                 <h2 class="mon-compte">Mon Compte</h2>
 
-                <div class="mon-compte-grid">
 
-                    <?php if (!$isLoggedIn): ?>
 
-                        <div class="mon-compte-livres">
-                            <p>Vous devez être connecté pour accéder à votre compte.</p>
-                            <a href="index.php?action=connexion">Connectez-vous</a>
-                        </div>
 
-                    <?php elseif (!$isOwner): ?>
 
-                        <div class="mon-compte-livres">
-                            <p>Accès refusé : ce compte ne vous appartient pas.</p>
-                            <a href="index.php?action=mon-compte&id=<?= (int) $_SESSION['user_id'] ?>">Aller sur mon compte</a>
-                        </div>
+                <?php if (!$isLoggedIn): ?>
+                    <div class="mon-compte-livres">
+                        <p>Vous devez être connecté pour accéder à votre compte.</p>
+                        <a href="index.php?action=connexion">Connectez-vous</a>
+                    </div>
 
-                    <?php else: ?>
+                <?php elseif (!$isOwner): ?>
+                    <div class="mon-compte-livres">
+                        <p>Accès refusé : ce compte ne vous appartient pas.</p>
+                        <a href="index.php?action=mon-compte&id=<?= (int) $_SESSION['user_id'] ?>">Aller sur mon compte</a>
+                    </div>
 
-                        <?php foreach ($users as $user) : ?>
-                            <div class="mon-compte-profil">
-                                <form id="avatarForm" action="index.php?action=update-avatar" method="post" enctype="multipart/form-data">
-                                    <img
-                                        id="avatarPreview"
-                                        src="<?= htmlspecialchars(!empty($user->getAvatar()) ? $user->getAvatar() : 'assets/images/placeholder.jpg') ?>"
-                                        alt="Photo de profil"
-                                        class="mon-compte-avatar">
+                <?php else: ?>
 
-                                    <div class="modifier-avatar">
-                                        <!-- Input file caché (le label déclenche le clic) -->
-                                        <input
-                                            type="file"
-                                            id="avatar_file"
-                                            name="avatar_file"
-                                            accept="image/*"
-                                            class="avatar-file-input">
+                    <div class="mon-compte-grid">
 
-                                        <!-- Lien maquette -->
-                                        <label for="avatar_file" class="avatar-modifier-link">Modifier</label>
-                                    </div>
-                                </form>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', () => {
-                                        const form = document.getElementById('avatarForm');
-                                        const input = form?.querySelector('input[type="file"][name="avatar_file"]');
-                                        console.log('file input found?', !!input);
-                                        if (!form || !input) return;
+                        <div class="mon-compte-profil">
+                            <form id="avatarForm" action="index.php?action=update-avatar" method="post" enctype="multipart/form-data">
+                                <img
+                                    id="avatarPreview"
+                                    src="<?= htmlspecialchars(!empty($user->getAvatar()) ? $user->getAvatar() : 'assets/images/placeholder.jpg') ?>"
+                                    alt="Photo de profil"
+                                    class="mon-compte-avatar">
 
-                                        input.addEventListener('change', () => {
-                                            console.log('file changed', input.files);
-                                            if (input.files && input.files.length > 0) form.submit();
-                                        });
-                                    });
-                                </script>
+                                <div class="modifier-avatar">
+                                    <!-- Input file caché (le label déclenche le clic) -->
+                                    <input
+                                        type="file"
+                                        id="avatar_file"
+                                        name="avatar_file"
+                                        accept="image/*"
+                                        class="avatar-file-input">
 
-                                <div class="photo-wrapper">
-                                    <img src="assets/images/Line5.png" alt="Ligne de séparation" class="mon-compte-ligne">
+                                    <!-- Lien maquette -->
+                                    <label for="avatar_file" class="avatar-modifier-link">Modifier</label>
                                 </div>
-                                <p class="mon-compte-pseudo"><?= htmlspecialchars($user->getPseudo()) ?></p>
-                                <p class="mon-compte-timeMember">Membre depuis: <?= htmlspecialchars($user->getInscription()) ?></p>
-                                <p class="mon-compte-nbrLivres"><?= htmlspecialchars($user->getNbrLivres()) ?> livres</p>
+                            </form>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const form = document.getElementById('avatarForm');
+                                    const input = form?.querySelector('input[type="file"][name="avatar_file"]');
+                                    console.log('file input found?', !!input);
+                                    if (!form || !input) return;
+
+                                    input.addEventListener('change', () => {
+                                        console.log('file changed', input.files);
+                                        if (input.files && input.files.length > 0) form.submit();
+                                    });
+                                });
+                            </script>
+
+                            <div class="photo-wrapper">
+                                <img src="assets/images/Line5.png" alt="Ligne de séparation" class="mon-compte-ligne">
                             </div>
-
-                            <div class="mon-compte-info">
-                                <h1 class="mon-compte-profil-titre">Vos informations personnelles</h1>
-                                <p class="mon-compte-email">Email : <?= htmlspecialchars($user->getEmail()) ?></p>
-                                <p class="mon-compte-password">Mot de passe : ********</p>
-                                <p class="mon-compte-pseudo">Pseudo : <?= htmlspecialchars($user->getPseudo()) ?></p>
-                                <button class="mon-compte-edit">Enregister</button>
-                            </div>
-                        <?php endforeach; ?>
+                            <p class="mon-compte-pseudo"><?= htmlspecialchars($user->getPseudo()) ?></p>
+                            <p class="mon-compte-timeMember">Membre depuis: <?= htmlspecialchars($user->getInscription()) ?></p>
+                            <p class="mon-compte-nbrLivres"><?= htmlspecialchars($user->getNbrLivres()) ?> livres</p>
+                        </div>
+                        <!-- ton bloc avatar + pseudo + membre depuis -->
 
 
+                        <div class="mon-compte-info">
+
+                            <h1 class="mon-compte-info-title">Vos informations personnelles</h1>
+                            <form class="mon-compte-info-form" action="index.php?action=update-profile" method="post">
+                                <div class="form-group">
+                                    <label for='email'>Adresse Email</label>
+                                    <input type="email" id='email' name='email' value="<?= htmlspecialchars($user->getEmail()) ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for='mot_de_passe'>Mot de passe</label>
+                                    <input type="password" id='mot_de_passe' name='mot_de_passe' value="<? htmlspecialchars($user->getMotDePasse()) ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for='pseudo'>Pseudo</label>
+                                    <input type="text" id='pseudo' name='pseudo' value="<?= htmlspecialchars($user->getPseudo()) ?>" required>
+                                </div>
+                                <div class="update-profile">
+                                    <button class="update-profile" type="submit">Enregister</button>
+                                </div>
+                            </form>
+
+                            <!-- ton formulaire infos -->
+                        </div>
 
                         <div class="mon-compte-livres">
+                            <div class="addLivre-link">
+                                <a href="index.php?action=editer">Ajouter / éditer un livre</a>
+                            </div>
 
                             <?php if (empty($livres)): ?>
                                 <p>
@@ -115,7 +134,7 @@
                                                 </td>
                                                 <td><?= htmlspecialchars($livre->getTitre()) ?></td>
                                                 <td><?= htmlspecialchars($livre->getAuteur()) ?></td>
-                                                <td><?= htmlspecialchars($livre->getDescription()) ?></td>
+                                                <td class="livre-description"><?= htmlspecialchars($livre->getDescription()) ?></td>
                                                 <td>
                                                     <span class="status <?= $livre->getStatut() === 'Disponible' ? 'status--ok' : 'status--ko' ?>">
                                                         <?= htmlspecialchars($livre->getStatut()) ?>
@@ -130,14 +149,20 @@
                                     </tbody>
                                 </table>
                             <?php endif; ?>
-
+                            <!-- ton tableau -->
                         </div>
-                        <a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
-
-                    <?php endif; ?>
-
-                </div>
-            </section>
+                    </div>
         </div>
+
+    <?php endif; ?>
+
+    <a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
+    </div>
+
+    </div>
+
+
+    </section>
+    </div>
     </div>
 </main>
