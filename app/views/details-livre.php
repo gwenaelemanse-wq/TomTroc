@@ -16,9 +16,9 @@
 
 
         <div class="details-livre-container">
-            <p class="details-breadcrumb">
-                Nos livres &gt; <?= htmlspecialchars($livre->getTitre()) ?>
-            </p>
+            <div class="details-breadcrumb">
+                <a href="index.php?action=livres">Nos livres</a> &gt; <?= htmlspecialchars($livre->getTitre()) ?>
+            </div>
 
             <div class="details-livre-grid">
 
@@ -43,7 +43,7 @@
                             <div class="details-owner">
                                 <h2>PROPRIÉTAIRE</h2>
 
-                                <a href="index.php?page=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
+                                <a href="index.php?action=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
                                     <img
                                         src="<?= htmlspecialchars($livre->getAvatar() ?? 'assets/images/Group12.png') ?>"
                                         alt="Avatar du propriétaire"
@@ -51,7 +51,7 @@
                                 </a>
                             </div>
 
-                            <a href="index.php?page=messagerie&conversation=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">
+                            <a href="index.php?action=messagerie&conversation=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">
                                 Envoyer un message
                             </a>
                         </div>

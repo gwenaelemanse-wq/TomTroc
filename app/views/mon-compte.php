@@ -75,19 +75,28 @@
                             <h1 class="mon-compte-info-title">Vos informations personnelles</h1>
                             <form class="mon-compte-info-form" action="index.php?action=update-profile" method="post">
                                 <div class="form-group">
-                                    <label for='email'>Adresse Email</label>
-                                    <input type="email" id='email' name='email' value="<?= htmlspecialchars($user->getEmail()) ?>" required>
+                                    <label for="email">Adresse email</label>
+                                    <input type="email" id="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" required>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for='mot_de_passe'>Mot de passe</label>
-                                    <input type="password" id='mot_de_passe' name='mot_de_passe' value="<? htmlspecialchars($user->getMotDePasse()) ?>" required>
+                                    <label for="mot_de_passe">Mot de passe</label>
+                                    <input
+                                        type="password"
+                                        id="mot_de_passe"
+                                        name="mot_de_passe"
+                                        placeholder="********"
+                                        autocomplete="new-password">
+                                    <small class="hint">Laisser vide pour ne pas changer.</small>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for='pseudo'>Pseudo</label>
-                                    <input type="text" id='pseudo' name='pseudo' value="<?= htmlspecialchars($user->getPseudo()) ?>" required>
+                                    <label for="pseudo">Pseudo</label>
+                                    <input type="text" id="pseudo" name="pseudo" value="<?= htmlspecialchars($user->getPseudo()) ?>" required>
                                 </div>
-                                <div class="update-profile">
-                                    <button class="update-profile" type="submit">Enregister</button>
+
+                                <div class="update-profile-wrapper">
+                                    <button class="update-profile" type="submit">Enregistrer</button>
                                 </div>
                             </form>
 

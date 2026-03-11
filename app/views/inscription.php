@@ -43,7 +43,7 @@
                 </form>
             </section>
             <div class="inscription-image">
-                <img src="assets/images/Mask group.png" alt="Image d'inscription">
+                <img src="assets/images/imageconnexion.png" alt="Image d'inscription">
             </div>
 
         </div>

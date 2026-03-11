@@ -75,9 +75,9 @@ class LivreManager extends BaseManager
     public function findLastAdded(): array  // ← Retourne un ARRAY, pas un seul livre!
     {
         $sql = "SELECT l.*, u.pseudo
-            FROM livres l
-            LEFT JOIN users u ON l.user_id = u.id_user
-            ORDER BY l.date_creation DESC LIMIT 4";
+        FROM livres l
+        LEFT JOIN users u ON l.user_id = u.id_user
+        ORDER BY l.id DESC LIMIT 4";
 
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);  // ← fetchAll() pour plusieurs lignes
@@ -91,6 +91,7 @@ class LivreManager extends BaseManager
             $livre->setAuteur($row['auteur']);
             $livre->setImage($row['image']);
             $livre->setPseudo($row['pseudo'] ?? '');
+            $livre->setDateCreation($row['date_creation']);
 
 
 

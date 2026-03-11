@@ -54,6 +54,12 @@ switch ($action) {
         $userController->logout();
         break;
 
+    case 'compte-public':
+        $id = (int) Utils::request('id', 0);
+        $userController = new UsersController();
+        $userController->showComptePublic($id);
+        break;
+
     //* commandes fonctionnalitées
 
     case 'editer':

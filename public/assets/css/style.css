@@ -556,6 +556,12 @@ h1 {
   color: #292929;
 }
 
+.owner-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 /** Pour éviter que le texte parte trop large */
 .details-livre-info-inner {
   width: 100%;
@@ -867,7 +873,9 @@ h1 {
 }
 
 .compte-public-profil-photo {
-  padding-top: 30px;
+  width: 180px; /* ajuste: 160-220 selon ta maquette */
+  border-radius: 100%;
+  height: 180px;
 }
 .compte-public-pseudo {
   font-family: Playfair Display;
@@ -949,25 +957,140 @@ h1 {
 }
 
 /** PAGE EDITER*/
+/** PAGE EDITER (maquette) */
+.editer-page {
+  background: #faf9f7;
+}
+.editer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.editer-back {
+  display: inline-block;
+  color: #a6a6a6;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.editer-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: #292929;
+  margin: 0 0 22px 0;
+}
+
+.editer-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.editer-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 38px;
+  align-items: start;
+}
+
+.editer-label-top {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #a6a6a6;
+  margin: 0 0 10px 0;
+}
+
+.editer-photo-wrapper {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #edf2f6;
+}
+
 .editer-photo-livre {
-  width: 488px; /* change ici */
-  height: 488px; /* optionnel */
-  object-fit: cover; /* garde un cadrage propre */
+  width: 100%;
+  height: 488px;
+  object-fit: cover;
   display: block;
 }
 
-.editer-photo-modifier {
-  font-family: Inter;
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-decoration: underline;
-  text-decoration-style: solid;
-  text-decoration-thickness: 0%;
-  color: #292929;
+.editer-photo-actions {
+  margin-top: 10px;
   text-align: right;
+}
+
+.editer-photo-modifier {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  text-decoration: underline;
+  color: #292929;
+  cursor: pointer;
+}
+
+.editer-file-input {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.image-input-hidden {
+  display: none;
+}
+
+.editer-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.editer-form-group label {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #a6a6a6;
+}
+
+.editer-form-group input,
+.editer-form-group select,
+.editer-form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background-color: #edf2f6;
+  border: none;
+  outline: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  color: #292929;
+}
+
+.editer-form-group textarea {
+  resize: none;
+}
+
+.editer-submit {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #00ac66;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* on garde image_url compatible controller, mais invisible (maquette) */
+.editer-image-url {
+  display: none;
 }
 
 /**Page de connexion/ inscription */

@@ -38,7 +38,7 @@ class UserManager extends BaseManager
     }
     public function getInscriptionByUserId(int $userId): ?string
     {
-        $sql = "SELECT date_inscription FROM users WHERE id_user = :userId";
+        $sql = "SELECT date_creat_compte FROM users WHERE id_user = :userId";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['userId' => $userId]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,6 +62,16 @@ class UserManager extends BaseManager
         ]);
 
         $user->setId((int)$this->pdo->lastInsertId());
+    }
+
+    public function updatePasswordHash(int $userId, string $hash): void
+    {
+        $sql = "UPDATE users SET mot_de_passe = :hash WHERE id_user = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'hash' => $hash,
+            'id' => $userId,
+        ]);
     }
 
     public function findOne(int $id): ?UserEntity
@@ -142,15 +152,34 @@ class UserManager extends BaseManager
         ]);
     }
 
-    public function updateProfile(int $userId, string $email, string $password, string $pseudo): void
+    public function updateProfile(int $userId, string $email, string $pseudo, string $newPassword = ''): void
     {
-        $sql = "UPDATE users SET email = :email, mot_de_passe = :mot_de_passe, pseudo = :pseudo WHERE id_user = :id_user";
+        if ($newPassword !== '') {
+            $sql = "UPDATE users
+                SET email = :email, pseudo = :pseudo, mot_de_passe = :mot_de_passe
+                WHERE id_user = :id_user";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                'email' => $email,
+                'pseudo' => $pseudo,
+                'mot_de_passe' => $newPassword,
+                'id_user' => $userId,
+            ]);
+            return;
+        }
+
+        // Pas de nouveau mdp => on ne touche pas à mot_de_passe
+        $sql = "UPDATE users SET email = :email, pseudo = :pseudo WHERE id_user = :id_user";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             'email' => $email,
-            'mot_de_passe' => password_hash($password, PASSWORD_DEFAULT),
             'pseudo' => $pseudo,
             'id_user' => $userId,
         ]);
+    }
+
+    public function showComptePublic(int $userId): ?UserEntity
+    {
+        return $this->findOne($userId);
     }
 }

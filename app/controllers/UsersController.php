@@ -52,22 +52,46 @@ class UsersController
     public function login(): void
     {
         $error = null;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email    = trim(Utils::request('email', ''));
             $password = Utils::request('password', '');
+
             $user = $this->manager->findByEmail($email);
-            if ($user !== null && password_verify($password, $user->getPassword())) {
-                $_SESSION['user_id']     = $user->getId();
-                $_SESSION['user_pseudo'] = $user->getPseudo();
-                Utils::redirect('mon-compte', ['id' => $user->getId()]);
-                return;
+
+            if ($user !== null) {
+                $stored = $user->getPassword(); // contenu DB: hash OU clair (actuellement chez toi)
+
+                $isHash = is_string($stored) && str_starts_with($stored, '$2y$');
+
+                $ok = false;
+
+                if ($isHash) {
+                    $ok = password_verify($password, $stored);
+                } else {
+                    // Ancien mot de passe en clair (migration)
+                    $ok = hash_equals((string) $stored, (string) $password);
+
+                    if ($ok) {
+                        $newHash = password_hash($password, PASSWORD_DEFAULT);
+                        $this->manager->updatePasswordHash($user->getId(), $newHash);
+                    }
+                }
+
+                if ($ok) {
+                    $_SESSION['user_id']     = $user->getId();
+                    $_SESSION['user_pseudo'] = $user->getPseudo();
+                    Utils::redirect('mon-compte', ['id' => $user->getId()]);
+                    return;
+                }
             }
+
             $error = 'Email ou mot de passe incorrect.';
         }
+
         $viewFile = __DIR__ . '/../views/connexion.php';
         require __DIR__ . '/../views/layout.php';
     }
-
     public function logout(): void
     {
         // Il faut que la session soit démarrée
@@ -204,21 +228,43 @@ class UsersController
             return;
         }
 
-        $userId = (int)$_SESSION['user_id'];
+        $userId = (int) $_SESSION['user_id'];
 
         $email = trim(Utils::request('email', ''));
-        $password = Utils::request('password', '');
         $pseudo = trim(Utils::request('pseudo', ''));
 
+        // Important: on lit le bon champ (à aligner avec le formulaire)
+        $newPassword = password_hash(Utils::request('mot_de_passe', ''), PASSWORD_DEFAULT); // ou 'mot_de_passe' selon ton form
+
         if ($email === '' || $pseudo === '') {
-            // Erreur : champs obligatoires manquants
             Utils::redirect('mon-compte', ['id' => $userId]);
             return;
         }
 
         $userManager = new UserManager();
-        $userManager->updateProfile($userId, $email, $password, $pseudo);
+        $userManager->updateProfile($userId, $email, $pseudo, $newPassword);
 
         Utils::redirect('mon-compte', ['id' => $userId]);
+    }
+
+    public function showComptePublic(int $userId): void
+    {
+        $user = $this->manager->showComptePublic($userId);
+
+        if ($user === null) {
+            Utils::redirect('accueil');
+            return;
+        }
+
+        $livreManager = new LivreManager();
+        $livres = $livreManager->findLivresByUserId($userId);
+
+        // Variables “simples” pour la vue
+        $isLoggedIn = isset($_SESSION['user_id']);
+        $isOwner = $this->checkConnectedById($userId);
+        $hasLivres = !empty($livres);
+
+        $viewFile = __DIR__ . '/../views/compte-public.php';
+        require __DIR__ . '/../views/layout.php';
     }
 }

@@ -30,7 +30,7 @@
 
             </section>
             <div class="connexion-image">
-                <img src="assets/images/Mask group.png" alt="Image de connexion">
+                <img src="assets/images/imageconnexion.png" alt="Image de connexion">
             </div>
 
         </div>
