@@ -22,31 +22,29 @@
                                 <th>DESCRIPTION</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td><img src="assets/images/livre1.jpg" alt="Livre 1" class="compte-public-livres-photo"></td>
-                                <td>Livre 1</td>
-                                <td>Auteur du livre 1</td>
-                                <td>Description du livre 1</td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/livre2.jpg" alt="Livre 2" class="compte-public-livres-photo"></td>
-                                <td>Livre 2</td>
-                                <td>Auteur du livre 2</td>
-                                <td>Description du livre 2</td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/livre3.jpg" alt="Livre 3" class="compte-public-livres-photo"></td>
-                                <td>Livre 3</td>
-                                <td>Auteur du livre 3</td>
-                                <td>Description du livre 3</td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/livre4.jpg" alt="Livre 4" class="compte-public-livres-photo"></td>
-                                <td>Livre 4</td>
-                                <td>Auteur du livre 4</td>
-                                <td>Description du livre 4</td>
-                            </tr>
+                            <?php foreach ($livres as $livre) : ?>
+                                <tr>
+                                    <td>
+                                        <?php $img = $livre->getImage(); ?>
+
+                                        <?php if (!empty($img)): ?>
+                                            <img src="<?= htmlspecialchars($img) ?>"
+                                                alt="<?= htmlspecialchars($livre->getTitre()) ?>"
+                                                class="compte-public-livres-photo">
+                                        <?php else: ?>
+                                            <img src="assets/images/placeholder.jpg"
+                                                alt="Pas d'image"
+                                                class="compte-public-livres-photo">
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($livre->getTitre()) ?></td>
+                                    <td><?= htmlspecialchars($livre->getAuteur()) ?></td>
+                                    <td class="compte-public-livres-description"><?= htmlspecialchars($livre->getDescription()) ?></td>
+
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
