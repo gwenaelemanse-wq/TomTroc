@@ -60,6 +60,12 @@ switch ($action) {
         $userController->showComptePublic($id);
         break;
 
+    case 'messagerie':
+        $id = (int) Utils::request('id', 0);
+        $messageController = new MessageController();
+        $messageController->show($id);
+        break;
+
     //* commandes fonctionnalitées
 
     case 'editer':
@@ -83,9 +89,7 @@ switch ($action) {
         break;
 
 
-    case 'messagerie':
-        require_once __DIR__ . '/../app/views/messagerie.php';
-        break;
+
 
 
 
