@@ -88,6 +88,10 @@ switch ($action) {
         $usersController->updateProfile();
         break;
 
+    case 'message-envoyer':
+        $messageController = new MessageController();
+        $messageController->send();
+        break;
 
 
 

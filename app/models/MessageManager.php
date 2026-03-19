@@ -39,4 +39,17 @@ class MessageManager extends BaseManager
 
         return $messages;
     }
+
+    public function createMessage(int $senderId, int $receiverId, string $message): void
+    {
+        $sql = "INSERT INTO messagerie (message, sender_id, receiver_id, created_at)
+            VALUES (:message, :sender_id, :receiver_id, NOW())";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'message' => $message,
+            'sender_id' => $senderId,
+            'receiver_id' => $receiverId
+        ]);
+    }
 }

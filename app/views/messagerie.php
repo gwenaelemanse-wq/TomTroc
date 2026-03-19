@@ -29,10 +29,7 @@
                 </div>
 
                 <div class="conversation_infos">
-                    <div class="conversation_top">
-                        <span class="conversation_nom">Alexlecture</span>
-                        <span class="conversation_heure">15:43</span>
-                    </div>
+
 
                     <p class="conversation_apercu">
                         Lorem ipsum dolor sit amet,...
@@ -79,19 +76,31 @@
     <section class="messagerie_chat" id="chat-zone">
 
         <!-- Header : interlocuteur actif -->
-        <header class="chat_header" id="chat-header">
-            <div class="avatar">
-                <img src="assets/images/alex.png" alt="Photo de Alexlecture">
-            </div>
-            <span class="chat_nom" id="chat-nom">Alexlecture</span>
-        </header>
+        <div class="chat_header">
+            <?php if ($otherUser !== null) : ?>
+                <div class="avatar">
+                    <img
+                        src="<?= htmlspecialchars($otherUser->getAvatar()) ?>"
+                        alt="Avatar de <?= htmlspecialchars($otherUser->getPseudo()) ?>">
+                </div>
 
+                <span class="chat_nom" id="chat-nom">
+                    <?= htmlspecialchars($otherUser->getPseudo()) ?>
+                </span>
+            <?php else : ?>
+                <span class="chat_nom" id="chat-nom">
+                    Sélectionnez une conversation
+                </span>
+            <?php endif; ?>
+        </div>
         <!--
+        //** */
         Zone messages
         En PHP : foreach ($messages as $msg)
         Classe message--envoye si $msg->getAuteurId() === $_SESSION['user_id']
         Classe message--recu sinon
-      -->
+        -->
+
         <div class="chat_messages" id="messages-container">
 
             <?php if (!empty($messages)) : ?>
@@ -134,15 +143,14 @@
         <form
             class="chat_formulaire"
             id="form-message"
-            action="/message/envoyer"
-            method="POST">
+            method="POST" action="index.php?action=message-envoyer">
             <!-- En PHP : valeur injectée selon la conversation active -->
-            <input type="hidden" name="conversation_id" id="input-conversation-id" value="1">
+            <input type="hidden" name="receiver_id" value="<?= (int) $otherUserId ?>">
 
             <input
                 class="chat_input"
                 type="text"
-                name="contenu"
+                name="message"
                 id="input-message"
                 placeholder="Tapez votre message ici"
                 autocomplete="off"
