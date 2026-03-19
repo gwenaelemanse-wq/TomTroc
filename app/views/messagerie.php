@@ -94,26 +94,35 @@
       -->
         <div class="chat_messages" id="messages-container">
 
-            <!-- Message envoyé (droite) -->
-            <article class="message message-envoye">
-                <time class="message_heure" datetime="2024-08-21T15:44">21.08 15:44</time>
-                <p class="message_contenu">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                </p>
-            </article>
+            <?php if (!empty($messages)) : ?>
 
-            <!-- Message reçu (gauche) -->
-            <article class="message message-recu">
-                <div class="avatar">
-                    <img src="assets/images/alex.png" alt="Photo de Alexlecture">
-                </div>
-                <div class="message_bloc">
-                    <time class="message_heure" datetime="2024-08-21T15:48">21.08 15:48</time>
-                    <p class="message_contenu">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    </p>
-                </div>
-            </article>
+                <?php $userId1 = $_SESSION['user_id']; ?>
+
+                <?php foreach ($messages as $message) : ?>
+
+                    <?php if ((int)$message->getSenderId() === (int)$userId1) : ?>
+
+                        <article class="message message-envoye">
+                            <p><?= htmlspecialchars($message->getMessage()) ?></p>
+                            <small><?= $message->getCreatedAt() ?></small>
+                        </article>
+
+                    <?php else : ?>
+
+                        <article class="message message-recu">
+                            <p><?= htmlspecialchars($message->getMessage()) ?></p>
+                            <small><?= $message->getCreatedAt() ?></small>
+                        </article>
+
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+
+            <?php else : ?>
+
+                <p>Aucun message</p>
+
+            <?php endif; ?>
 
         </div>
 
