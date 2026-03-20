@@ -74,6 +74,22 @@ class MessageManager extends BaseManager
             ':userId2' => $userId2
         ]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $unique = [];
+        $seen = [];
+
+        foreach ($rows as $row) {
+            $otherId = (int) $row['other_user_id'];
+
+            if (isset($seen[$otherId])) {
+                continue;
+            }
+
+            $seen[$otherId] = true;
+            $unique[] = $row;
+        }
+
+        return $unique;
     }
 }
