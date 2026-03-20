@@ -94,10 +94,8 @@ class UsersController
     }
     public function logout(): void
     {
-        // Il faut que la session soit démarrée
-        if (session_status() !== PHP_SESSION_ACTIVE) {
-            session_start();
-        }
+
+
 
         // Vider les variables de session
         $_SESSION = [];

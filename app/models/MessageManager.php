@@ -52,4 +52,28 @@ class MessageManager extends BaseManager
             'receiver_id' => $receiverId
         ]);
     }
+
+    public function findUserConversations(int $userId2): array
+    {
+        $sql = " SELECT message, created_at,
+        CASE
+            WHEN sender_id = :userId2 THEN receiver_id
+            ELSE sender_id
+        END AS other_user_id, u.pseudo, u.avatar
+        FROM messagerie
+        JOIN users u
+        ON u.id_user = CASE
+            WHEN sender_id = :userId2 THEN receiver_id
+            ELSE sender_id
+            END
+        WHERE sender_id = :userId2 OR receiver_id = :userId2
+        ORDER BY created_at DESC";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':userId2' => $userId2
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

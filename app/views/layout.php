@@ -41,6 +41,8 @@
     </header>
 
     <main>
+
+
         <?php require $viewFile; ?> <!-- ← La vue s'insère ici -->
     </main>
 

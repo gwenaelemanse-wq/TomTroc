@@ -11,20 +11,27 @@ class MessageController
 
     public function show(int $userId2): void
     {
-        $userId1 = (int) $_SESSION['user_id'];
+
+
         $messages = [];
         $otherUserId = $userId2;
         $otherUser = null;
+        $conversations = [];
 
-        if ($userId2 > 0) {
-            $messages = $this->manager->findConversationBetweenUsers($userId1, $userId2);
+        if (isset($_SESSION['user_id'])) {
+            $userId1 = (int) $_SESSION['user_id'];
+            $conversations = $this->manager->findUserConversations($userId1);
 
-            $userManager = new UserManager();
-            $otherUser = $userManager->findOne($userId2);
-        }
+            if ($userId2 > 0) {
+                $messages = $this->manager->findConversationBetweenUsers($userId1, $userId2);
 
-        $viewFile = __DIR__ . '/../views/messagerie.php';
-        require __DIR__ . '/../views/layout.php';
+                $userManager = new UserManager();
+                $otherUser = $userManager->findOne($userId2);
+            }
+
+            $viewFile = __DIR__ . '/../views/messagerie.php';
+            require __DIR__ . '/../views/layout.php';
+        };
     }
 
     public function send(): void
