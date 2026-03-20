@@ -113,6 +113,7 @@
                 method="POST" action="index.php?action=message-envoyer">
                 <!-- En PHP : valeur injectée selon la conversation active -->
                 <input type="hidden" name="receiver_id" value="<?= (int) $otherUserId ?>">
+                <input type="hidden" name="livre_id" value="<?= (int)($_GET['livre_id'] ?? 0) ?>">
 
                 <input
                     class="chat_input"

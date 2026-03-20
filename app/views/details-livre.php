@@ -51,7 +51,7 @@
                                 </a>
                             </div>
 
-                            <a href="index.php?action=messagerie&conversation=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">
+                            <a href="index.php?action=messagerie&id=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">
                                 Envoyer un message
                             </a>
                         </div>
