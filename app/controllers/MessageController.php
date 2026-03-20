@@ -11,6 +11,10 @@ class MessageController
 
     public function show(int $userId2): void
     {
+        if (!isset($_SESSION['user_id'])) {
+            Utils::redirect('connexion');
+            return;
+        }
 
 
         $messages = [];
@@ -36,6 +40,10 @@ class MessageController
 
     public function send(): void
     {
+        if (!isset($_SESSION['user_id'])) {
+            Utils::redirect('connexion');
+            return;
+        }
 
         $senderId = (int) $_SESSION['user_id'];
         $receiverId = (int) $_POST['receiver_id'];

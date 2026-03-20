@@ -6,7 +6,7 @@
         <p>Veuillez vous connecter pour accéder à votre messagerie.</p>
     </main>
 <?php else : ?>
-    <?php echo 'branche connectée'; ?>
+
     <main class="messagerie">
         <aside class="messagerie_sidebar">
             <h1 class="messagerie_titre">Messagerie</h1>
