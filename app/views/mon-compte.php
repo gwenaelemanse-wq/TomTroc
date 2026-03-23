@@ -160,18 +160,17 @@
                             <?php endif; ?>
                             <!-- ton tableau -->
                         </div>
-                    </div>
+            </section>
         </div>
-
-    <?php endif; ?>
-
-    <a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
     </div>
 
-    </div>
+<?php endif; ?>
+
+<a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
 
 
-    </section>
-    </div>
-    </div>
+
+
+
+
 </main>

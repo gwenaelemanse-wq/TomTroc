@@ -7,10 +7,10 @@ body {
 }
 
 main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  background-color: #faf9f7;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 h1 {
@@ -144,6 +144,7 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   margin-left: 12px;
+  margin-top: 30px;
 }
 
 .hero-photo {
@@ -151,22 +152,15 @@ h1 {
 }
 
 .hero-photo img {
-  width: 100%;
-  max-width: 450px; /* ajuste selon ta maquette */
-  border-radius: 8px;
+  width: 75%;
+  max-width: 400px; /* ajuste selon ta maquette */
+  border-radius: 2px;
 }
 
 /* SECTION avec couleur différente */
 .latest-books {
   background-color: #faf9f7; /* couleur différente */
   padding: 60px 0;
-}
-
-/* Titre de section */
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 28px;
 }
 
 /* Grille 4 colonnes */
@@ -243,14 +237,10 @@ h1 {
 /**Section description */
 .section-title {
   margin-bottom: 40px;
-
-  font-family: Playfair Display;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
-  font-style: Regular;
   font-size: 32px;
-
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 1.2;
   text-align: center;
 }
 
@@ -277,7 +267,7 @@ h1 {
 .description {
   background: #fff;
   border-radius: 12px;
-  padding: 22px 18px;
+  padding: 18px 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
@@ -286,26 +276,13 @@ h1 {
 }
 
 .description-text {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-weight: 400;
-
-  font-size: 14px;
-
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-size: 18px;
+  line-height: 1.4;
   text-align: center;
-  width: 180px;
-  height: 51px;
-
-  opacity: 1;
-  top: 1798px;
-  left: 1006px;
+  width: auto;
+  height: auto;
 }
 
 .btn-get-started {
@@ -534,10 +511,11 @@ h1 {
   font-family: Inter;
   font-weight: 600;
   font-style: Semi Bold;
-  font-size: 8px;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 8%;
   color: #292929;
+  margin-top: 30px;
 }
 .details-livre-description p {
   font-family: Inter;
@@ -557,6 +535,13 @@ h1 {
   color: #a6a6a6;
 }
 
+.details-owner {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .details-owner h2 {
   font-family: Inter;
   font-weight: 600;
@@ -565,14 +550,45 @@ h1 {
   line-height: 100%;
   letter-spacing: 8%;
   color: #292929;
+  margin-top: 30px;
+}
+
+.owner-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.owner-info a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #292929;
 }
 
 .owner-avatar {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+.owner-pseudo {
+  font-family: Inter;
+  font-weight: bold;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #292929;
+  padding: 18px;
+  object-fit: cover;
+}
+
 /** Pour éviter que le texte parte trop large */
 .details-livre-info-inner {
   width: 100%;
@@ -581,30 +597,39 @@ h1 {
   flex-direction: column;
 
   padding: 60px;
+  overflow: hidden;
+}
+
+.details-livre-info-inner p {
+  margin-top: 12px;
+  color: #292929;
+  font-family: Inter;
+  font-size: 14px;
 }
 
 .btn-contact {
   display: block;
-  width: 480px;
-  height: 30px;
-  padding: 30px 10px;
-  background-color: #00ac66; /* ton vert */
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+  width: 100%;
+  max-width: 485px;
+  box-sizing: border-box;
+  margin: 32px auto 0;
+  padding: 18px 24px;
   text-align: center;
-  margin-top: 50px;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: #00ac66;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 /**Page compte personnel */
 .mon-compte-main {
-  max-width: 1200px;
+  max-width: 845px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 24px;
+  align-items: center;
 }
+
 .mon-compte-section h2 {
   font-family: Playfair Display;
   font-weight: 400;

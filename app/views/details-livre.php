@@ -37,18 +37,21 @@
                             <h1 class="details-livre-title"><?= htmlspecialchars($livre->getTitre()) ?></h1>
 
                             <p class="details-livre-author">Par <?= htmlspecialchars($livre->getAuteur()) ?></p>
-
+                            <p>DESCRIPTION</p>
                             <p class="details-livre-description"><?= htmlspecialchars($livre->getDescription()) ?></p>
 
                             <div class="details-owner">
                                 <h2>PROPRIÉTAIRE</h2>
 
-                                <a href="index.php?action=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
-                                    <img
-                                        src="<?= htmlspecialchars($livre->getAvatar() ?? 'assets/images/Group12.png') ?>"
-                                        alt="Avatar du propriétaire"
-                                        class="owner-avatar">
-                                </a>
+                                <div class="owner-info">
+                                    <a href="index.php?action=compte-public&id=<?= (int)($livre->getUserId() ?? 0) ?>">
+                                        <img
+                                            src="<?= htmlspecialchars($livre->getAvatar() ?? 'assets/images/Group12.png') ?>"
+                                            alt="Avatar du propriétaire"
+                                            class="owner-avatar">
+                                        <p class="owner-pseudo"><?= htmlspecialchars($livre->getPseudo() ?? 'Utilisateur inconnu') ?>
+                                    </a>
+                                </div>
                             </div>
 
                             <a href="index.php?action=messagerie&id=<?= (int)($livre->getUserId() ?? 0) ?>" class="btn-contact">

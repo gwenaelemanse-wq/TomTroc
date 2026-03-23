@@ -23,7 +23,7 @@
 
 <section class="latest-books">
     <div class="container">
-        <h2 class="section-title">Nos derniers livres à l'échange</h2>
+        <h2 class="section-title">Les derniers livres ajoutés</h2>
 
         <div class="latest-grid">
             <?php foreach ($livres as $livre): ?>
