@@ -211,38 +211,35 @@ class LivreManager extends BaseManager
         ]);
     }
 
-    public function search(string $term): array
+    public function findOneByTitre(string $titre): ?LivreEntity
     {
         $sql = "SELECT l.*, u.avatar, u.pseudo
             FROM livres l
             LEFT JOIN users u ON l.user_id = u.id_user
-            WHERE l.titre LIKE :term
-               OR l.auteur LIKE :term
-            ORDER BY l.date_creation DESC";
+            WHERE LOWER(TRIM(l.titre)) = LOWER(TRIM(:titre))
+            LIMIT 1";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['term' => '%' . $term . '%']);
+        $stmt->execute(['titre' => $titre]);
 
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $livres = [];
-
-        foreach ($rows as $row) {
-            $livre = new LivreEntity();
-            $livre->setId($row['id']);
-            $livre->setTitre($row['titre']);
-            $livre->setAuteur($row['auteur']);
-            $livre->setImage($row['image']);
-            $livre->setDescription($row['description']);
-            $livre->setStatut($row['statut']);
-            $livre->setDateCreation($row['date_creation']);
-            $livre->setUserId($row['user_id']);
-            $livre->setAvatar($row['avatar'] ?? '');
-            $livre->setPseudo($row['pseudo'] ?? '');
-
-            $livres[] = $livre;
+        if (!$row) {
+            return null;
         }
 
-        return $livres;
+        $livre = new LivreEntity();
+        $livre->setId($row['id']);
+        $livre->setTitre($row['titre']);
+        $livre->setAuteur($row['auteur']);
+        $livre->setImage($row['image']);
+        $livre->setDescription($row['description']);
+        $livre->setStatut($row['statut']);
+        $livre->setDateCreation($row['date_creation']);
+        $livre->setUserId($row['user_id']);
+        $livre->setAvatar($row['avatar'] ?? '');
+        $livre->setPseudo($row['pseudo'] ?? '');
+
+        return $livre;
     }
 }

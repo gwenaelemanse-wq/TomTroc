@@ -97,7 +97,7 @@ switch ($action) {
 
     case 'search':
         $livresController = new LivresController();
-        $livresController->index();
+        $livresController->searchAndRedirect();
         break;
 
 

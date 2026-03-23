@@ -15,8 +15,8 @@ class LivresController
         $search = trim(Utils::request('search', ''));
 
         if ($search !== '') {
-            $livres = $this->manager->search($search);
-            $noResults = empty($livres);
+            $livres = $this->manager->findOneByTitre($search);
+            $noResults = $livres === null;
         } else {
             $livres = $this->manager->findAll();
             $noResults = false;
@@ -203,5 +203,30 @@ class LivresController
 
         // chemin enregistré en DB (accessible depuis le navigateur)
         return 'uploads/' . $fileName;
+    }
+
+    public function searchAndRedirect(): void
+    {
+        $search = trim(Utils::request('search', ''));
+
+        if ($search === '') {
+            // rien tapé => retour listing
+            Utils::redirect('livres');
+            return;
+        }
+
+        $livre = $this->manager->findOneByTitre($search);
+
+        if ($livre !== null) {
+            Utils::redirect('details-livre', ['id' => $livre->getId()]);
+            return;
+        }
+
+        // sinon on ré-affiche la page livres + message
+        $livres = $this->manager->findAll();
+        $noResults = true;
+
+        $viewFile = __DIR__ . '/../views/livres.php';
+        require __DIR__ . '/../views/layout.php';
     }
 }
