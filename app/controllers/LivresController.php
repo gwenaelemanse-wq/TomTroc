@@ -12,19 +12,27 @@ class LivresController
 
     public function index(): void
     {
+        $search = trim(Utils::request('search', ''));
 
-        $livres = $this->manager->findAll();
+        if ($search !== '') {
+            $livres = $this->manager->search($search);
+            $noResults = empty($livres);
+        } else {
+            $livres = $this->manager->findAll();
+            $noResults = false;
+        }
+
         $viewFile = __DIR__ . '/../views/livres.php';
         require __DIR__ . '/../views/layout.php';
     }
 
-    public function show(int $id): void
+    public function show(): void
     {
+        $id = (int) Utils::request('id', 0);
         $livre = $this->manager->findOne($id);
 
         if ($livre === null) {
-            http_response_code(404);
-            echo "Livre introuvable";
+            Utils::redirect('livres');
             return;
         }
 

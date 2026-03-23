@@ -95,6 +95,12 @@ switch ($action) {
         $messageController->send();
         break;
 
+    case 'search':
+        $livresController = new LivresController();
+        $livresController->index();
+        break;
+
+
 
 
 

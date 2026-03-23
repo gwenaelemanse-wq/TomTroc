@@ -17,15 +17,21 @@
                 <div class="main-top">
                     <h2 class="books-title">Nos livres à l’échange</h2>
 
-                    <form class="search-form" action="#" method="get">
+                    <form class="search-form" action="index.php?action=search" method="get">
                         <div class="search-container">
-                            <input type="text" name="search" placeholder="Rechercher..." />
-                            <button type="submit">🔍</button>
+                            <input type="text" name="search" placeholder="Rechercher un livre" />
+                            <button type="submit"><img src="assets/images/Union.png" alt="Rechercher"></button>
                         </div>
                     </form>
                 </div>
 
                 <div class="books-grid">
+
+                    <?php if (!empty($_GET['search']) && !empty($noResults)): ?>
+                        <p class="search-empty">
+                            Aucun livre ne correspond à “<?= htmlspecialchars($_GET['search']) ?>”.
+                        </p>
+                    <?php endif; ?>
 
                     <?php foreach ($livres as $livre): ?>
                         <article class="book-card">

@@ -10,7 +10,7 @@
                     <p class="compte-public-pseudo">Pseudo: <?= htmlspecialchars($user->getPseudo()) ?></p>
                     <p class="compte-public-timeMember">Membre depuis: <?= htmlspecialchars($user->getInscription()) ?></p>
                     <p class="compte-public-nbrLivres"><?= htmlspecialchars($user->getNbrLivres()) ?> livres</p>
-                    <a href="messagerie.php" class="btn-contact-public">Ecrire un message</a>
+                    <a href="index.php?action=messagerie&id=<?= htmlspecialchars($user->getId()) ?>" class="btn-contact-public">Ecrire un message</a>
                 </div>
                 <div class="compte-public-livres">
                     <table>

@@ -25,7 +25,9 @@
 
                             <div class="conversation_infos">
                                 <span class="conversation_nom"><?= htmlspecialchars($conv['pseudo']) ?></span>
-                                <span class="conversation_heure"><?= $conv['created_at'] ?></span>
+                                <span class="conversation_heure">
+                                    <?= htmlspecialchars(Utils::formatMessageDate($conv['created_at'])) ?>
+                                </span>
                                 <p class="conversation_apercu"><?= htmlspecialchars($conv['message']) ?></p>
                             </div>
 
@@ -79,15 +81,27 @@
                         <?php if ((int)$message->getSenderId() === (int)$userId1) : ?>
 
                             <article class="message message-envoye">
-                                <p><?= htmlspecialchars($message->getMessage()) ?></p>
-                                <small><?= $message->getCreatedAt() ?></small>
+                                <small class="message_heure">
+                                    <?= htmlspecialchars(Utils::formatMessageDate($message->getCreatedAt())) ?>
+                                </small>
+                                <div class="message_contenu"><?= htmlspecialchars($message->getMessage()) ?></div>
+
                             </article>
 
                         <?php else : ?>
 
                             <article class="message message-recu">
-                                <p><?= htmlspecialchars($message->getMessage()) ?></p>
-                                <small><?= $message->getCreatedAt() ?></small>
+                                <div class="avatar">
+                                    <img
+                                        src="<?= htmlspecialchars($otherUser->getAvatar()) ?>">
+
+                                    <small class="message_heure">
+                                        <?= htmlspecialchars(Utils::formatMessageDate($message->getCreatedAt())) ?></small>
+                                </div>
+
+
+                                <div class="message_contenu"><?= htmlspecialchars($message->getMessage()) ?></div>
+
                             </article>
 
                         <?php endif; ?>
