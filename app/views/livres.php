@@ -18,9 +18,13 @@
                     <h2 class="books-title">Nos livres à l’échange</h2>
 
                     <form class="search-form" action="index.php" method="get">
+                        <input type="hidden" name="action" value="search">
+
                         <div class="search-container">
                             <input type="text" name="search" placeholder="Rechercher un livre" />
-                            <button type="submit"><img src="assets/images/Union.png" alt="Rechercher"></button>
+                            <button type="submit">
+                                <img src="assets/images/Union.png" alt="Rechercher">
+                            </button>
                         </div>
                     </form>
                 </div>

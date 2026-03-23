@@ -211,6 +211,40 @@ class LivreManager extends BaseManager
         ]);
     }
 
+    public function search(string $term): array
+    {
+        $sql = "SELECT l.*, u.avatar, u.pseudo
+            FROM livres l
+            LEFT JOIN users u ON l.user_id = u.id_user
+            WHERE l.titre LIKE :term
+               OR l.auteur LIKE :term
+            ORDER BY l.date_creation DESC";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['term' => '%' . $term . '%']);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $livres = [];
+        foreach ($rows as $row) {
+            $livre = new LivreEntity();
+            $livre->setId($row['id']);
+            $livre->setTitre($row['titre']);
+            $livre->setAuteur($row['auteur']);
+            $livre->setImage($row['image']);
+            $livre->setDescription($row['description']);
+            $livre->setStatut($row['statut']);
+            $livre->setDateCreation($row['date_creation']);
+            $livre->setUserId($row['user_id']);
+            $livre->setAvatar($row['avatar'] ?? '');
+            $livre->setPseudo($row['pseudo'] ?? '');
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
+    }
+
     public function findOneByTitre(string $titre): ?LivreEntity
     {
         $sql = "SELECT l.*, u.avatar, u.pseudo

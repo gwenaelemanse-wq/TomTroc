@@ -15,8 +15,8 @@ class LivresController
         $search = trim(Utils::request('search', ''));
 
         if ($search !== '') {
-            $livres = $this->manager->findOneByTitre($search);
-            $noResults = $livres === null;
+            $livres = $this->manager->search($search);   // <-- array
+            $noResults = empty($livres);
         } else {
             $livres = $this->manager->findAll();
             $noResults = false;
