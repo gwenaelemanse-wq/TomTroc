@@ -21,7 +21,7 @@
                         <input type="hidden" name="action" value="search">
 
                         <div class="search-container">
-                            <input type="text" name="search" placeholder="Rechercher un livre" />
+                            <input type="text" name="search" placeholder="Rechercher un livre" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
                             <button type="submit">
                                 <img src="assets/images/Union.png" alt="Rechercher">
                             </button>
