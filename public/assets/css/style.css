@@ -108,7 +108,8 @@ h1 {
 .hero-content {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 100px;
+  margin-right: 220px;
 }
 
 .hero-text h1 {
@@ -123,13 +124,12 @@ h1 {
   opacity: 1;
 }
 
-.hero-text {
+.hero-text p {
   flex: 1;
   font-family: Inter;
   font-weight: 300;
   font-style: Light;
   font-size: 16px;
-  line-height: 1.6;
   letter-spacing: 0%;
 
   opacity: 1;
@@ -143,18 +143,30 @@ h1 {
   border-radius: 8px; /* arrondi */
   text-decoration: none;
   font-weight: 600;
-  margin-left: 12px;
+
   margin-top: 30px;
 }
 
 .hero-photo {
   flex: 1;
+  max-width: 480px; /* même logique que l'image */
 }
 
 .hero-photo img {
-  width: 75%;
-  max-width: 400px; /* ajuste selon ta maquette */
+  width: 100%; /* l'image prend la largeur du bloc */
+  display: block; /* supprime l'espace blanc sous l'image */
   border-radius: 2px;
+}
+
+.hero-photo p {
+  margin-top: 12px;
+  margin-right: 0;
+  text-align: right; /* clé : aligne le texte à droite */
+  font-family: Inter;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 14px;
+  color: #a6a6a6;
 }
 
 /* SECTION avec couleur différente */

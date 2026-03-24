@@ -17,6 +17,7 @@
         </div>
         <div class="hero-photo">
             <img src="assets/images/photo de l'accueil.jpg" alt="Photo de l'accueil">
+            <p>Hamza</p>
         </div>
     </div>
 </section>
