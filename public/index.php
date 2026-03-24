@@ -100,7 +100,10 @@ switch ($action) {
         $livresController->searchAndRedirect();
         break;
 
-
+    case 'unread-count':
+        $messageController = new MessageController();
+        $messageController->unreadCount();
+        break;
 
 
 

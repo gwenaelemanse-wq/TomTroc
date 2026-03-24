@@ -51,6 +51,30 @@ h1 {
   display: flex;
   align-items: center;
 }
+
+.nav-link--messagerie {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+
+  border-radius: 999px;
+  background: #0b8f6a; /* ton vert */
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
 /* =========================
    LOGO
 ========================= */
@@ -1524,15 +1548,25 @@ body {
   align-items: flex-start;
 }
 
+.message-recu .avatar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 60px;
+}
+
+.message-recu .message_heure {
+  white-space: nowrap; /* empêche de couper en 2 lignes */
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--texte);
+}
+
 .message-recu .message_contenu {
   background: var(--bulle-recu); /* blanc */
   border: 1px solid #eee; /* optionnel */
   border-bottom-left-radius: 6px;
-}
-
-.message_heure {
-  font-size: 0.75rem;
-  color: var(--texte);
 }
 
 /* ---- Animation apparition ---- */
