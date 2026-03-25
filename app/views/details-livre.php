@@ -30,7 +30,7 @@
                             </div>
 
                             <p>DESCRIPTION</p>
-                            <p class="details-livre-description"><?= htmlspecialchars($livre->getDescription()) ?></p>
+                            <p class="details-livre-description"><?= nl2br(htmlspecialchars($livre->getDescription())) ?></p>
 
                             <div class="details-owner">
                                 <h2>PROPRIÉTAIRE</h2>

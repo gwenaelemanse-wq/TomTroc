@@ -19,6 +19,11 @@ require_once __DIR__ . '/../app/services/Utils.php';
 $action = Utils::request('action', 'accueil');
 
 switch ($action) {
+
+    case '':
+        require __DIR__ . '/../app/views/accueil.php';
+        break;
+
     case 'livres':
         $livresController = new LivresController();
         $livresController->index();
@@ -109,6 +114,6 @@ switch ($action) {
 
 
     default:
-        require __DIR__ . '/../app/views/accueil.php';
+        echo "404 - Page non trouvée";
         break;
 }
