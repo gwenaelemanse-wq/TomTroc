@@ -4,11 +4,11 @@
 
 
         <div class="hero-text">
-            <h1>Rejoignez nos <br />lecteurs passionnés </h1>
+            <h1>Rejoignez nos <br>lecteurs passionnés </h1>
 
-            <p>Donnez une nouvelle vie à vos livres en les<br />
-                échangeant avec d'autres amoureux de la lecture.<br />
-                Nous croyons en la magie du partage de connaissances<br />
+            <p>Donnez une nouvelle vie à vos livres en les<br>
+                échangeant avec d'autres amoureux de la lecture.<br>
+                Nous croyons en la magie du partage de connaissances<br>
                 et d'histoires à travers les livres. </p>
 
             <a href="index.php?action=livres" class="btn-discover">Découvrir</a>
@@ -16,7 +16,7 @@
 
         </div>
         <div class="hero-photo">
-            <img src="assets/images/photo de l'accueil.jpg" alt="Photo de l'accueil">
+            <img src="assets/images/photoAccueil2.jpg" alt="Photo de l'accueil">
             <p>Hamza</p>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <h2 class="section-title">Les derniers livres ajoutés</h2>
 
         <div class="latest-grid">
-            <?php foreach ($livres as $livre): ?>
+            <?php foreach ($livres as $livre) : ?>
                 <article class="book-card">
                     <a href="index.php?action=details-livre&id=<?= (int)$livre->getId() ?>">
                         <img
@@ -76,7 +76,7 @@
     </div>
 </section>
 <div class="photo">
-    <img class="photo-banner" src="assets/images/Photo accueil 2.jpg" alt="Photo de l'accueil 2">
+    <img class="photo-banner" src="assets/images/PhotoAccueil.jpg" alt="Photo de l'accueil 2">
 </div>
 
 <section class="valeurs">
@@ -93,7 +93,7 @@
             <p class="signature">L'équipe TomTroc</p>
 
 
-            <img class="vector-image" src="assets/images/vector.svg" alt="Image vectorielle">
+            <img class="vector-image" src="assets/images/Vector2.svg" alt="Image vectorielle">
         </div>
     </div>
 </section>

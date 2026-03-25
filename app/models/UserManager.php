@@ -36,6 +36,17 @@ class UserManager extends BaseManager
 
         return $result ? (int)$result['nbrLivres'] : 0;
     }
+
+    public function refreshNbLivres(int $userId): void
+    {
+        $sql = "UPDATE users
+            SET nb_livres = (SELECT COUNT(*) FROM livres WHERE user_id = :userId)
+            WHERE id_user = :userId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $ok = $stmt->execute(['userId' => $userId]);
+    }
+
     public function getInscriptionByUserId(int $userId): ?string
     {
         $sql = "SELECT date_creat_compte FROM users WHERE id_user = :userId";

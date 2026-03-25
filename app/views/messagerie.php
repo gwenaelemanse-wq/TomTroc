@@ -1,10 +1,7 @@
 <div class="container">
-    <main class="messagerie">
+    <div class="messagerie">
 
         <?php if (!isset($_SESSION['user_id'])) : ?>
-
-
-
             <p>Veuillez vous connecter pour accéder à votre messagerie.</p>
 
 
@@ -43,7 +40,7 @@
       ZONE CHAT
       En PHP : data-conversation-id injecté par le contrôleur
     ========================================== -->
-            <section class="messagerie_chat" id="chat-zone">
+            <div class="messagerie_chat" id="chat-zone">
 
                 <!-- Header : interlocuteur actif -->
                 <div class="chat_header">
@@ -67,21 +64,18 @@
         //** */
         Zone messages
         En PHP : foreach ($messages as $msg)
-        Classe message--envoye si $msg->getAuteurId() === $_SESSION['user_id']
-        Classe message--recu sinon
+        Classe message-envoye si $msg->getAuteurId() === $_SESSION['user_id']
+        Classe message-recu sinon
         -->
 
                 <div class="chat_messages" id="messages-container">
 
                     <?php if (!empty($messages)) : ?>
-
                         <?php $userId1 = $_SESSION['user_id']; ?>
 
                         <?php foreach ($messages as $message) : ?>
-
                             <?php if ((int)$message->getSenderId() === (int)$userId1) : ?>
-
-                                <article class="message message-envoye">
+                                <article class="message-envoye">
                                     <small class="message_heure">
                                         <?= htmlspecialchars(Utils::formatMessageDate($message->getCreatedAt())) ?>
                                     </small>
@@ -90,8 +84,7 @@
                                 </article>
 
                             <?php else : ?>
-
-                                <article class="message message-recu">
+                                <article class="message-recu">
                                     <div class="avatar">
                                         <img
                                             src="<?= htmlspecialchars($otherUser->getAvatar()) ?>">
@@ -110,7 +103,6 @@
                         <?php endforeach; ?>
 
                     <?php else : ?>
-
                         <p>Aucun message</p>
 
                     <?php endif; ?>
@@ -141,7 +133,7 @@
                     <button class="chat_bouton-envoyer" type="submit">Envoyer</button>
                 </form>
 
-            </section>
+            </div>
         <?php endif; ?>
-    </main>
+    </div>
 </div>

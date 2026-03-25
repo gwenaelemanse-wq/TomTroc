@@ -92,4 +92,30 @@ class MessageManager extends BaseManager
 
         return $unique;
     }
+
+    public function countUnreadForUser(int $userId): int
+    {
+        $stmt = $this->pdo->prepare("
+        SELECT COUNT(*) 
+        FROM messagerie 
+        WHERE receiver_id = :userId AND is_read = 0
+    ");
+        $stmt->execute([':userId' => $userId]);
+        return (int) $stmt->fetchColumn();
+    }
+
+    public function markConversationAsRead(int $currentUserId, int $otherUserId): void
+    {
+        $stmt = $this->pdo->prepare("
+        UPDATE messagerie
+        SET is_read = 1
+        WHERE receiver_id = :currentUserId
+          AND sender_id = :otherUserId
+          AND is_read = 0
+    ");
+        $stmt->execute([
+            ':currentUserId' => $currentUserId,
+            ':otherUserId' => $otherUserId,
+        ]);
+    }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 class LivresController
 {
     private LivreManager $manager;
@@ -95,7 +94,6 @@ class LivresController
 
         // 3) POST: enregistrer
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $userId = (int) $_SESSION['user_id'];
 
             $titre = trim(Utils::request('titre', ''));

@@ -257,6 +257,8 @@ class UsersController
         $livreManager = new LivreManager();
         $livres = $livreManager->findLivresByUserId($userId);
 
+        $user->setNbrLivres(count($livres));
+
         // Variables “simples” pour la vue
         $isLoggedIn = isset($_SESSION['user_id']);
         $isOwner = $this->checkConnectedById($userId);

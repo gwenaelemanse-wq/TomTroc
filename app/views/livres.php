@@ -1,4 +1,4 @@
-<main class="site-books">
+<div class="site-books">
     <section class="books">
         <div class="container books-content">
             <div class="main-top">
@@ -18,13 +18,13 @@
 
             <div class="books-grid">
 
-                <?php if (!empty($_GET['search']) && !empty($noResults)): ?>
+                <?php if (!empty($_GET['search']) && !empty($noResults)) : ?>
                     <p class="search-empty">
                         Aucun livre ne correspond à “<?= htmlspecialchars($_GET['search']) ?>”.
                     </p>
                 <?php endif; ?>
 
-                <?php foreach ($livres as $livre): ?>
+                <?php foreach ($livres as $livre) : ?>
                     <article class="book-card">
                         <a href="index.php?action=details-livre&id=<?= (int) $livre->getId() ?>">
                             <img
@@ -42,4 +42,4 @@
             </div>
         </div>
     </section>
-</main>
+</div>

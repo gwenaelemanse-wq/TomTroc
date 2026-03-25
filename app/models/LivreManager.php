@@ -173,6 +173,9 @@ class LivreManager extends BaseManager
         ]);
 
         $livre->setId((int)$this->pdo->lastInsertId());
+
+        $userManager = new UserManager();
+        $userManager->refreshNbLivres($livre->getUserId());
     }
 
     public function updateLivre(LivreEntity $livre): void
@@ -209,7 +212,12 @@ class LivreManager extends BaseManager
             'livreId' => $livreId,
             'userId'  => $userId,
         ]);
+
+        $userManager = new UserManager();
+        $userManager->refreshNbLivres($userId);
     }
+
+
 
     public function search(string $term): array
     {

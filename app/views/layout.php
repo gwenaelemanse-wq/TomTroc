@@ -30,9 +30,10 @@
                             <a href="index.php?action=messagerie">
                                 <img src="assets/images/IconMessagerie.png" alt="Messagerie">
                                 Messagerie
+                                <span class="nav-badge" id="messagerie-badge" hidden>0</span>
                             </a>
                         </li>
-                        <li><a href="index.php?action=mon-compte<?= isset($_SESSION['user_id']) ? '&id=' . (int)$_SESSION['user_id'] : '' ?>"><img src="assets/images/IconMonCompte.png" alt="Mon compte"></a>Mon compte</li>
+                        <li><a href="index.php?action=mon-compte<?= isset($_SESSION['user_id']) ? '&id=' . (int)$_SESSION['user_id'] : '' ?>"><img src="assets/images/IconMonCompte.png" alt="Mon compte">Mon compte</a></li>
                         <li><a href="index.php?action=connexion">Connexion</a></li>
                     </ul>
                 </nav>

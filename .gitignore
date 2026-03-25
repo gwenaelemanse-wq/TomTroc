@@ -9,3 +9,6 @@ public/uploads/*
 .DS_Store
 Thumbs.db
 .vscode/
+
+phpcs.phar
+phpcbf.phar

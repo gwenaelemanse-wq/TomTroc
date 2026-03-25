@@ -33,6 +33,8 @@ class MessageController
                 $otherUser = $userManager->findOne($userId2);
             }
 
+            $this->manager->markConversationAsRead($userId1, $userId2);
+
             $viewFile = __DIR__ . '/../views/messagerie.php';
             require __DIR__ . '/../views/layout.php';
         };
@@ -55,5 +57,20 @@ class MessageController
 
         header("Location: index.php?action=messagerie&id=" . $receiverId);
         exit;
+    }
+
+    public function unreadCount(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        if (!isset($_SESSION['user_id'])) {
+            echo json_encode(['unread' => 0]);
+            return;
+        }
+
+        $userId = (int) $_SESSION['user_id'];
+        $count = $this->manager->countUnreadForUser($userId);
+
+        echo json_encode(['unread' => $count]);
     }
 }
