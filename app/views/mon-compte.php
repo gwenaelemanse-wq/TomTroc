@@ -64,6 +64,7 @@
                             </div>
                             <p class="mon-compte-pseudo"><?= htmlspecialchars($user->getPseudo()) ?></p>
                             <p class="mon-compte-timeMember"><?= htmlspecialchars(Utils::membreDepuis($user->getInscription())) ?></p>
+                            <h1>BIBLIOTHEQUE</h1>
                             <p class="mon-compte-nbrLivres"><img src="assets/images/Vector@2x.png" alt="Livres"> <?= htmlspecialchars($user->getNbrLivres()) ?> livres</p>
                         </div>
                         <!-- ton bloc avatar + pseudo + membre depuis -->
@@ -164,7 +165,7 @@
         </div>
     </div>
 
-                <?php endif; ?>
+<?php endif; ?>
 
 <a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
 

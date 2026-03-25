@@ -676,12 +676,30 @@ h1 {
   grid-column: 1 / -1;
 }
 
+.mon-compte-nbrLivres {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
 .mon-compte-profil {
   display: flex;
   flex-direction: column; /* empile verticalement */
   align-items: center; /* centre horizontalement */
   text-align: center; /* centre le texte */
   gap: 12px;
+}
+
+.mon-compte-profil h1 {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Regular;
+  font-size: 8px;
+  align-items: flex-start;
+  margin-bottom: 30px;
 }
 
 /* Avatar gros + rond */
@@ -692,6 +710,7 @@ h1 {
   object-fit: cover;
   display: block;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 /* Cacher l'input file natif */
