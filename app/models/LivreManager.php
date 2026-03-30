@@ -160,7 +160,7 @@ class LivreManager extends BaseManager
 
     public function createLivre(LivreEntity $livre): void
     {
-        $sql = "INSERT INTO livres (titre, auteur, image, description, statut, user_id) VALUES (:titre, :auteur, :image, :description, :statut, :user_id)";
+        $sql = "INSERT INTO livres (titre, auteur, image, description, statut, user_id, date_creation) VALUES (:titre, :auteur, :image, :description, :statut, :user_id, :date_creation)";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
@@ -169,7 +169,8 @@ class LivreManager extends BaseManager
             'image' => $livre->getImage(),
             'description' => $livre->getDescription(),
             'statut' => $livre->getStatut(),
-            'user_id' => $livre->getUserId()
+            'user_id' => $livre->getUserId(),
+            'date_creation' => date('Y-m-d H:i:s'),
         ]);
 
         $livre->setId((int)$this->pdo->lastInsertId());

@@ -12,3 +12,5 @@ Thumbs.db
 
 phpcs.phar
 phpcbf.phar
+
+config/config.php

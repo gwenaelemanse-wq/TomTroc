@@ -167,7 +167,7 @@
 
 <?php endif; ?>
 
-<a href="index.php?action=deconnexion" class="btn-logout">Se déconnecter</a>
+
 
 
 
