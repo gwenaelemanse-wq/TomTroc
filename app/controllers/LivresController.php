@@ -44,7 +44,7 @@ class LivresController
         $pageTitle = 'TomTroc - Accueil';
         $livres = $this->manager->findLastAdded();
         $viewFile = __DIR__ . '/../views/accueil-content.php';
-        require __DIR__ . '/../views/layout.php';  // ← Le layout enveloppe tout
+        require __DIR__ . '/../views/layout.php';
     }
 
     public function showLivresByUser(int $userId): void
